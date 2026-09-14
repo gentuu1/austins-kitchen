@@ -194,11 +194,11 @@ const Home = async () => {
         </div>
 
 
-        <div className="gap-5 w-full h-fit grid lg:grid-cols-2  grid-cols-1 md:p-5 mt-3">
+        <div className="gap-5 w-full h-fit grid lg:grid-cols-2  grid-cols-1 p-5 mt-3">
 
           {
             items.products.map((item) => (
-              <div key={item._id} className="border md:py-10 py-7 lg:gap-5 md:gap-5 gap-5  items-center justify-center flex md:min-h-72 lg:min-h-70 h-60 bg-white shadow-2xl border-gray-300 rounded-2xl hover:border-[#ED8F0C] hover:scale-105 transition-all duration-400">
+              <div key={item._id} className="border md:py-10 py-7 px-3 md:gap-5 gap-5  items-center justify-center flex md:min-h-72 lg:min-h-70 h-60 bg-white shadow-2xl border-gray-300 rounded-2xl hover:border-[#ED8F0C] hover:scale-105 transition-all duration-400">
                 <Link href={`/menu/${item._id}`} className="overflow-hidden rounded-2xl lg:h-[85%] md:h-[85%] h-[80%]  lg:w-[40%] md:w-[40%] w-[45%]" >
                   <div className="  overflow-hidden">
                     <Image

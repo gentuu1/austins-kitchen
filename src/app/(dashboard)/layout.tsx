@@ -33,7 +33,7 @@ export default function DashboardLayout({ children, }: { children: ReactNode }) 
     return (
         <div className="bg-zinc-50 w-screen h-screen lg:flex-row flex md:flex-col-reverse flex-col-reverse">
 
-            <div className={`border-t shadow-2xl lg:border-t-0 lg:shadow-none w-full lg:w-62 fixed bottom-0 left-0 md:fixed lg:relative bg-zinc-100 z-50 `}>
+            <div className={`border-t shadow-2xl lg:border-t-0 lg:shadow-none w-full lg:w-62 fixed bottom-0 left-0 md:fixed lg:relative lg:bg-zinc-100 bg-[#1F2933] z-50 `}>
 
                 <div className="relative lg:flex hidden items-center  w-full h-26 bg-[#1F2933]">
                     <div className="absolute left-1/2 transform -translate-x-1/2 h-20 w-32">
