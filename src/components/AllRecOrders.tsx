@@ -113,7 +113,7 @@ const AllRecOrders = () => {
                           {
                               rec_ord.map((order) => (
                                   <tr onClick={() => router.push(`/admin-dashboard/orders/${order._id}`)} key={order._id} className='hover:bg-neutral-100 focus:bg-neutral-100 cursor-pointer flex flex-col md:table-row md:p-0 p-5 gap-3 md:gap-0 shadow-sm mb-2'>
-                                      <td className='flex md:table-cell justify-between py-4  md:pl-2'>
+                                      <td className='flex md:table-cell justify-between py-2  md:pl-2'>
                                           <h2 className='md:hidden text-xl text-bold'>
                                               Order Id
                                           </h2>
@@ -121,7 +121,7 @@ const AllRecOrders = () => {
                                           <p className='text-gray-500'>#AK-{order._id.slice(0, 8).toUpperCase()}</p>
                                       </td>
 
-                                      <td className='flex md:table-cell justify-between py-4'>
+                                      <td className='flex md:table-cell justify-between py-2'>
                                           <h2 className='md:hidden text-xl text-bold'>
                                               Date
                                           </h2>
@@ -129,7 +129,7 @@ const AllRecOrders = () => {
                                           <p className='text-gray-500'>{(order.createdAt).toLocaleDateString()}</p>
                                       </td>
 
-                                      <td className='flex md:table-cell justify-between py-4'>
+                                      <td className='flex md:table-cell justify-between py-2'>
                                           <h2 className='md:hidden text-xl text-bold'>
                                               Customer
                                           </h2>
@@ -137,7 +137,7 @@ const AllRecOrders = () => {
                                           <p className='text-gray-500 line-clamp-1'>{`${order.firstName} ${order.lastName}`}</p>
                                       </td>
 
-                                      <td className='flex md:table-cell items-center justify-between py-4'>
+                                      <td className='flex md:table-cell items-center justify-between py-2'>
                                           <h2 className='md:hidden text-xl text-bold'>
                                               Product
                                           </h2>
@@ -152,7 +152,7 @@ const AllRecOrders = () => {
                                           </div>
                                       </td>
 
-                                      <td className='flex md:table-cell justify-between py-4'>
+                                      <td className='flex md:table-cell justify-between py-2'>
                                           <h1 className='md:hidden text-xl text-bold'>
                                               Amount
                                           </h1>
@@ -162,7 +162,7 @@ const AllRecOrders = () => {
                                           </p>
                                       </td>
 
-                                      <td className='flex md:table-cell justify-between py-4 '>
+                                      <td className='flex md:table-cell justify-between py-2 '>
                                           <h1 className='md:hidden text-xl text-bold'>
                                               Status
                                           </h1>
