@@ -37,7 +37,7 @@ const AllRecOrders = () => {
     }, [])
 
   return (
-      <section className='px-2 w-[98%] md:w-[95%] h-fit py-5 m-auto rounded-lg bg-white mt-10'>
+      <section className='px-5 w-[95%] h-fit  m-auto rounded-lg bg-white mt-10'>
           <div className='w-full flex justify-between mb-5'>
               <h1 className='text-lg font-bold '>Recent Orders</h1>
 
@@ -112,9 +112,9 @@ const AllRecOrders = () => {
                       <tbody>
                           {
                               rec_ord.map((order) => (
-                                  <tr onClick={() => router.push(`/admin-dashboard/orders/${order._id}`)} key={order._id} className='hover:bg-neutral-100 focus:bg-neutral-100 cursor-pointer flex flex-col md:table-row md:p-0 p-4 gap-3 md:gap-0 shadow-sm mb-2'>
+                                  <tr onClick={() => router.push(`/admin-dashboard/orders/${order._id}`)} key={order._id} className='hover:bg-neutral-100 focus:bg-neutral-100 cursor-pointer flex flex-col md:table-row md:p-0 p-5 gap-3 md:gap-0 shadow-sm mb-2'>
                                       <td className='flex md:table-cell justify-between py-4  md:pl-2'>
-                                          <h2 className='md:hidden text-2xl text-bold'>
+                                          <h2 className='md:hidden text-xl text-bold'>
                                               Order Id
                                           </h2>
 
@@ -122,7 +122,7 @@ const AllRecOrders = () => {
                                       </td>
 
                                       <td className='flex md:table-cell justify-between py-4'>
-                                          <h2 className='md:hidden text-2xl text-bold'>
+                                          <h2 className='md:hidden text-xl text-bold'>
                                               Date
                                           </h2>
 
@@ -130,7 +130,7 @@ const AllRecOrders = () => {
                                       </td>
 
                                       <td className='flex md:table-cell justify-between py-4'>
-                                          <h2 className='md:hidden text-2xl text-bold'>
+                                          <h2 className='md:hidden text-xl text-bold'>
                                               Customer
                                           </h2>
 
@@ -138,7 +138,7 @@ const AllRecOrders = () => {
                                       </td>
 
                                       <td className='flex md:table-cell items-center justify-between py-4'>
-                                          <h2 className='md:hidden text-2xl text-bold'>
+                                          <h2 className='md:hidden text-xl text-bold'>
                                               Product
                                           </h2>
 
@@ -153,7 +153,7 @@ const AllRecOrders = () => {
                                       </td>
 
                                       <td className='flex md:table-cell justify-between py-4'>
-                                          <h1 className='md:hidden text-2xl text-bold'>
+                                          <h1 className='md:hidden text-xl text-bold'>
                                               Amount
                                           </h1>
 
@@ -163,7 +163,7 @@ const AllRecOrders = () => {
                                       </td>
 
                                       <td className='flex md:table-cell justify-between py-4 '>
-                                          <h1 className='md:hidden text-2xl text-bold'>
+                                          <h1 className='md:hidden text-xl text-bold'>
                                               Status
                                           </h1>
 

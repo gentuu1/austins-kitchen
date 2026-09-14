@@ -59,7 +59,7 @@ const Admindashboard = async () => {
                 <h1 className='text-3xl font-bold '>Welcome back! <span className="capitalize">{user.firstName + " " + user.lastName}</span></h1>
             </div>
 
-            <section className='w-full flex md:flex-row flex-col gap-5 md:px-5 md:py-3 p-3 items-center '>
+            <section className='w-full flex md:flex-row flex-col gap-5  md:py-3 p-5 items-center '>
 
                 <div className=' md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col'>
                     <div className='flex w-full  justify-between items-center '>

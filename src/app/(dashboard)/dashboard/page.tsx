@@ -27,7 +27,7 @@ const Dashboard = async() => {
                 <h1 className='text-3xl font-bold '>Welcome back! {user.firstName + " " + user.lastName}</h1>
             </div>
 
-            <section className='w-full flex md:flex-row flex-col gap-5 md:px-5 md:py-3 p-3 items-center mt-5 md:mt-10 lg:mt-10'>
+            <section className='w-full flex md:flex-row flex-col gap-5 px-5 md:py-3 p-5 items-center mt-5 md:mt-10 lg:mt-10'>
 
                 <TotalOrdNum/>
                   <FavNumber/> 
