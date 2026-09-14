@@ -50,7 +50,7 @@ const Home = async () => {
       <section className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 space-y-5 md:space-x-4 md:px-4 p-5">
        {
         images.productDisplay.map((dis : {_id : string, image : string, title : string})=>(
-          <div key={dis._id.toString()} className="h-80 md:h-85 lg:h-80 flex items-center bg-gray-100 flex-col gap-5 py-3 rounded-2xl hover:border-y-0 hover:border border-[#ED8F0C] hover:scale-105 transition-all duration-300">
+          <div key={dis._id.toString()} className="h-80 md:h-85 lg:h-80 flex items-center bg-gray-100 flex-col gap-5 p-3 rounded-2xl hover:border-y-0 hover:border border-[#ED8F0C] hover:scale-105 transition-all duration-300">
             <div className="w-[50%] lg:w-[60%] md:w-[60%] h-60">
               <Image
                 src={dis?.image}

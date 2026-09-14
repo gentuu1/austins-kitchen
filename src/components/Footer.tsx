@@ -14,12 +14,12 @@ const Footer = () => {
 
                         <p className="flex items-center gap-3 text-gray-100">
                             <FaMapMarkerAlt className="text-[#ED8F0C]" />
-                            Ibadan
+                            IBADAN
                         </p>
 
                         <p className="flex items-center gap-3 text-gray-100">
                             <FaPhoneAlt className="text-[#ED8F0C]" />
-                            08133804461
+                            +2347063317472
                         </p>
 
                         <p className="flex items-center gap-3 text-gray-100">

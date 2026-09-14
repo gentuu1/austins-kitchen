@@ -96,13 +96,13 @@ const NavBar = () => {
                         </div>
                     </nav>
 
-                    <div className="w-full border flex flex-col space-y-3 p-5 mt-5">
+                    <div className="w-full  flex flex-col space-y-3 p-5 mt-5">
                         <Link href='/about-us'>
-                            <p className="text-lg font-medium dark:text-gray-200">ABOUT US</p>
+                            <p className="text-lg font-medium dark:text-gray-200">ABOUT-US</p>
                         </Link>
 
                         <Link href='/contact-us'>
-                            <p className="text-lg font-medium dark:text-gray-200">CONTACT</p>
+                            <p className="text-lg font-medium dark:text-gray-200">CONTACT-US</p>
                         </Link>
 
                         <Link href='/menu'>
@@ -111,7 +111,7 @@ const NavBar = () => {
                     </div>
 
 
-                    <div className='w-full border flex flex-col items-center mt-20'>
+                    <div className='w-full flex flex-col items-center mt-20'>
                         <Link href='/signin ' >
                             <button className='py-3 px-20  rounded-xl border bg-transparent border-[#ED8F0C] text-lg font-bold'>
                                 SiGNIN
