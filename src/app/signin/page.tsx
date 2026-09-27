@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { signIn } from '@/app/utils/action';
 import Spinner from '@/components/Spinner';
+import Link from 'next/link';
 
 
 const Page = () => {
@@ -65,7 +66,7 @@ const Page = () => {
 
         validationSchema: yup.object({
             email: yup.string().required('Email is required').email('Enter a valid email'),
-            password: yup.string().required('Password is required').min(8, 'Password must be at leasst 8 charaters')
+            password: yup.string().required('Password is required')
         })
     })
 
@@ -85,25 +86,25 @@ const Page = () => {
                 <NavBar />
             </div>
 
-            <section className="w-full lg:p-7 md:p-7 p-5 bg-[#FFFFFF]/95 backdrop-blur-xl mt-5">
+            <section className="w-full lg:p-7 md:p-7 p-5   backdrop-blur-xl mt-5">
 
                 <div className="w-full flex flex-col h-30 items-center justify-center space-y-3">
-                    <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight`}>
+                    <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight dark:text-[#D2D3DB]`}>
                         SIGN IN
                     </h1>
 
-                    <p className={`text-center text-sm tracking-tight`}>
-                        <a className='underline hover:text-[#ED8F0C]' href="/">Home</a>/Sign-In
+                    <p className={`text-center text-sm tracking-tight dark:text-gray-300`}>
+                        <Link className='underline hover:text-[#ED8F0C]' href="/">Home</Link>/Sign-In
                     </p>
                 </div>
 
                 <div className="w-full py-10 flex justify-center">
 
-                    <form className="w-full max-w-md rounded-2xl p-6 md:p-8 flex flex-col space-y-6 shadow-2xl">
+                    <form className="w-full max-w-md bg-slate-900/85 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] rounded-2xl p-6 md:p-8 flex flex-col space-y-6 shadow-2xl">
 
 
                         <div className="flex flex-col space-y-2">
-                            <label className="text-sm font-medium">Email address</label>
+                            <label className="text-sm font-medium text-gray-300">Email address</label>
 
 
                             <div className='flex flex-col leading-tight'>
@@ -114,11 +115,11 @@ const Page = () => {
                                     onBlur={formik.handleBlur}
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="border rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
+                                    className="border border-gray-600 bg-white/10 text-white placeholder:text-gray-400  rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
                                 />
                                 {
                                     formik.errors.email && formik.touched.email && (
-                                        <small className='text-red-500 text-[10px] md:text-[8px]'>{formik.errors.email}</small>
+                                        <small className='text-red-500 text-sm'>{formik.errors.email}</small>
                                     )
                                 }
                             </div>
@@ -128,7 +129,7 @@ const Page = () => {
 
                         <div className="flex flex-col space-y-2">
 
-                            <label className="text-sm font-medium">Password</label>
+                            <label className="text-sm font-medium text-gray-300">Password</label>
 
                             <div className='flex flex-col leading-tight'>
                                 <div className="relative">
@@ -140,14 +141,14 @@ const Page = () => {
                                         value={formik.values.password}
                                         type={showPassword ? "text" : "password"}
                                         placeholder="Enter your password"
-                                        className="border rounded-md p-3 w-full pr-10 focus:outline-none focus:border-[#ED8F0C]"
+                                        className="border border-gray-600 bg-white/10 text-white placeholder:text-gray-400  rounded-md p-3 w-full pr-10 focus:outline-none focus:border-[#ED8F0C]"
                                     />
 
                                     <button
 
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
                                     >
                                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                                     </button>
@@ -156,7 +157,7 @@ const Page = () => {
 
                                 {
                                     formik.errors.password && formik.touched.password && (
-                                        <small className='text-red-500 text-[10px] md:text-[8px]'>{formik.errors.password}</small>
+                                        <small className='text-red-500 text-sm'>{formik.errors.password}</small>
                                     )
                                 }
                             </div>
@@ -168,7 +169,7 @@ const Page = () => {
                         <div className="flex justify-end text-sm">
                             <a
                                 href="/forgot-password"
-                                className="text-gray-600 hover:text-[#ED8F0C]"
+                                className="text-gray-400 hover:text-[#ED8F0C]"
                             >
                                 Forgot password?
                             </a>
@@ -176,7 +177,7 @@ const Page = () => {
 
 
 
-                        <button type='button' onClick={() => formik.handleSubmit()} className=" flex justify-center bg-[#ED8F0C] text-white p-3 rounded-md hover:opacity-90 transition">
+                        <button type='button' onClick={() => formik.handleSubmit()} className=" flex justify-center cursor-pointer border border-[#F97316] bg-[#ED8F0C] text-white p-3 rounded-md hover:opacity-90 transition">
                             {
 
                                 isLoading ? (
@@ -188,7 +189,7 @@ const Page = () => {
 
 
 
-                        <p className="text-center text-sm text-gray-600">
+                        <p className="text-center text-sm text-gray-400">
                             Don't have an account?{" "}
                             <a
                                 href="/createaccount"

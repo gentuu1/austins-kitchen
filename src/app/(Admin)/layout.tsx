@@ -31,7 +31,7 @@ export default function AdminLayout({children,}:{children:ReactNode}){
     return (
         <div className="w-screen h-screen flex lg:flex-row  flex-col-reverse">
 
-            <div className="lg:w-62 w-full lg:relative fixed bottom-0 lg:h-screen justify-between h-fit md:p-2 lg:p-0 bg-[#1F2933] text-white z-50">
+            <div className="lg:w-62 w-full lg:relative fixed bottom-0 lg:h-screen justify-between h-fit md:p-2 lg:p-0 bg-[#1F2933] text-white z-50 border-t border-slate-700 shadow-sm md:border-t-0">
                
                 <div className=" lg:flex lg:flex-col p-5 items-center hidden">
                     <h1 className="text-2xl font-bold">
@@ -90,7 +90,7 @@ export default function AdminLayout({children,}:{children:ReactNode}){
                 </div>
             </div>
 
-            <div className="flex-1 bg-zinc-50 overflow-auto lg:pb-0 pb-24">
+            <div className="flex-1 dark:bg-[#23232C] bg-zinc-50 overflow-auto lg:pb-0 pb-24">
                 <CartProvider>
                     {children}
                 </CartProvider>

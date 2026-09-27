@@ -29,9 +29,9 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
     status: 'active'
   })
 
-  // if (!product) {
-  //   redirect('/dashboard/menu')
-  // }
+  if (!product) {
+     redirect('/dashboard/menu')
+  }
 
   return (
     <div className="min-h-screen">
@@ -45,7 +45,7 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
         {/* Back */}
         <Link
           href="/dashboard/menu"
-          className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#ED8F0C] transition mb-6"
+          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-[#ED8F0C] transition mb-6"
         >
           ← Back to menu
         </Link>
@@ -55,15 +55,14 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
 
           <div className="">
 
-            <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-orange-50">
+            <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-orange-50 dark:bg-orange-950/20">
 
               <Image
                 src={product.image}
                 alt={product.title}
-                height={300}
-                width={300}
+                height={400}
+                width={400}
                 loading='eager'
-                // fill  
                 priority
                 className="object-cover size-full"
               />
@@ -119,7 +118,7 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
               Austin Kitchen
             </p>
 
-            <h1 className={`${anton.className} text-4xl md:text-5xl text-gray-800 tracking-wide`}>
+            <h1 className={`${anton.className} text-4xl md:text-5xl text-gray-800 dark:text-white tracking-wide`}>
               {product.title}
             </h1>
 
@@ -129,7 +128,7 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
                 ★★★★★
               </div>
 
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
                 4.8
               </span>
 
@@ -139,31 +138,31 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
               ₦{product.price.toLocaleString()}
             </p>
 
-            <p className="text-gray-500 leading-7 mt-5 max-w-xl">
+            <p className="text-gray-500 dark:text-gray-400 leading-7 mt-5 max-w-xl">
               {product.description}
             </p>
 
 
 
-            <div className="border-t border-gray-200 my-7" />
+            <div className="border-t border-gray-200 dark:border-gray-700 my-7" />
 
             <AddtoCart id={product._id.toString()} />
 
 
-            
+
             <div className="grid grid-cols-2 gap-4 mt-5">
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-950/40 flex items-center justify-center">
                   🚴
                 </div>
 
                 <div>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
                     Fast Delivery
                   </p>
 
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
                     Delivered to your door
                   </p>
                 </div>
@@ -171,19 +170,20 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
 
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-950/40 flex items-center justify-center">
                   ✓
                 </div>
 
                 <div>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
                     Freshly Prepared
                   </p>
 
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
                     Made fresh for you
                   </p>
                 </div>
+
               </div>
 
             </div>
@@ -193,13 +193,13 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
         </div>
 
 
-        <div className="mt-16 border-t border-gray-200 pt-10">
+        <div className="mt-16 border-t border-gray-200 dark:border-gray-700 pt-10">
 
-          <h2 className={`${anton.className} text-2xl text-gray-800`}>
+          <h2 className={`${anton.className} text-2xl text-gray-800 dark:text-white`}>
             About this meal
           </h2>
 
-          <p className="text-gray-500 leading-7 max-w-3xl mt-3">
+          <p className="text-gray-500 dark:text-gray-400 leading-7 max-w-3xl mt-3">
             {product.description}
           </p>
 
@@ -212,11 +212,11 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
           <div className="flex items-center justify-between mb-5">
 
             <div>
-              <h2 className={`${anton.className} text-2xl text-gray-800`}>
+              <h2 className={`${anton.className} text-2xl text-gray-800 dark:text-white`}>
                 You might also like
               </h2>
 
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 More meals you may enjoy
               </p>
             </div>
@@ -230,10 +230,10 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
 
           </div>
 
-          <section className="w-full flex gap-5 overflow-x-auto pb-4 scrollbar-hide">
+          <section style={{ scrollbarWidth: 'none' }} className="w-full flex gap-5 overflow-x-auto pb-4 ">
             {
               items?.length !== 0 && items?.map((each) => (
-                <div key={each._id} className='flex-none relative min-w-70 md:w-75 bg-white rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
+                <div key={each._id} className='flex-none relative min-w-70 md:w-75 bg-white dark:bg-[#1A1C22] rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
 
 
                   <div className='absolute top-4 right-4 z-20'>
@@ -259,7 +259,7 @@ const Productdetails = async ({ params }: { params: { _id: string } }) => {
 
                     <Link href={`/dashboard/menu/${each._id}`}>
                       <div className='flex flex-col gap-2 text-center'>
-                        <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800`}>
+                        <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800 dark:text-white`}>
                           {each.title}
                         </h2>
 

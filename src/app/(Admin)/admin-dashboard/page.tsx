@@ -55,52 +55,67 @@ const Admindashboard = async () => {
 
     return (
         <div>
-            <div className='p-5'>
-                <h1 className='text-3xl font-bold '>Welcome back! <span className="capitalize">{user.firstName + " " + user.lastName}</span></h1>
+            <div className="p-5">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-[#D2D3DB]">
+                    Welcome back!{" "} <span className="capitalize">{user.firstName + " " + user.lastName}</span>
+                </h1>
             </div>
 
-            <section className='w-full flex md:flex-row flex-col gap-5  md:py-3 p-5 items-center '>
+            <section className="w-full flex md:flex-row flex-col gap-5 md:py-3 p-5 items-center">
 
-                <div className=' md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col'>
-                    <div className='flex w-full  justify-between items-center '>
-                        <div className='bg-[#ED8F0C]/20 p-3 rounded-full'>
-                            <FaShoppingBag className='text-[#ED8F0C] text-lg' />
+                <div className="md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white dark:bg-[#1A1C22] shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col">
+                    <div className="flex w-full justify-between items-center">
+                        <div className="bg-[#ED8F0C]/20 p-3 rounded-full">
+                            <FaShoppingBag className="text-[#ED8F0C] text-lg" />
                         </div>
-                        <p className='text-gray-600 md:text-xl font-semibold '>Total Orders</p>
+
+                        <p className="text-gray-600 dark:text-gray-300 md:text-xl font-semibold">
+                            Total Orders
+                        </p>
                     </div>
 
-                    <p className='text-2xl font-bold text-gray-800'>{String(orders?.length).padStart(2, "0")}</p>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">
+                        {String(orders?.length).padStart(2, "0")}
+                    </p>
                 </div>
 
 
-                <div className='md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col'>
-                    <div className='flex w-full justify-between items-center '>
-                        <div className='bg-[#ED8F0C]/20 p-3 rounded-full'>
-                            <FaUsers className='text-[#ED8F0C] text-lg' />
+                <div className="md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white dark:bg-[#1A1C22] shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col">
+                    <div className="flex w-full justify-between items-center">
+                        <div className="bg-[#ED8F0C]/20 p-3 rounded-full">
+                            <FaUsers className="text-[#ED8F0C] text-lg" />
                         </div>
-                        <p className='text-gray-600 md:text-xl font-semibold '>Total Customers</p>
+
+                        <p className="text-gray-600 dark:text-gray-300 md:text-xl font-semibold">
+                            Total Customers
+                        </p>
                     </div>
 
-                    <p className='text-2xl font-bold text-gray-800'>{String(cusTs.length).padStart(2, '0')}</p>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">
+                        {String(cusTs.length).padStart(2, "0")}
+                    </p>
                 </div>
 
 
-                <div className='md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col'>
-                    <div className='flex w-full  justify-between items-center '>
-                        <div className='bg-[#ED8F0C]/20 p-3 rounded-full'>
-                            <FaNairaSign className='text-[#ED8F0C] text-lg' />
+                <div className="md:flex-1 w-full lg:h-28 md:h-36 h-34 bg-white dark:bg-[#1A1C22] shadow-sm rounded-xl items-center lg:gap-3 gap-5 p-4 flex flex-col">
+                    <div className="flex w-full justify-between items-center">
+                        <div className="bg-[#ED8F0C]/20 p-3 rounded-full">
+                            <FaNairaSign className="text-[#ED8F0C] text-lg" />
                         </div>
-                        <p className='text-gray-600 md:text-xl font-semibold '>Total Revenue</p>
+
+                        <p className="text-gray-600 dark:text-gray-300 md:text-xl font-semibold">
+                            Total Revenue
+                        </p>
                     </div>
 
-                    <p className='text-2xl font-bold text-gray-800'>₦{(rev).toLocaleString()}</p>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">
+                        ₦{rev.toLocaleString()}
+                    </p>
                 </div>
 
             </section>
 
-            <AllRecOrders/>
-
-            
+            <AllRecOrders />
         </div>
 
 

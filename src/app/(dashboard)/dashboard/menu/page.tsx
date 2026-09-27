@@ -57,9 +57,9 @@ const Menu = async ({ searchParams }: { searchParams: Promise<{ search?: string 
       {
         products.length === 0 && (
           <div className="w-full py-20 px-5 flex flex-col items-center justify-center text-center gap-3">
-            <FaSearch className="text-4xl text-gray-300" />
+            <FaSearch className="text-4xl text-gray-300 dark:text-gray-500" />
 
-            <h2 className={`${anton.className} text-2xl text-gray-700`}>
+            <h2 className={`${anton.className} text-2xl text-gray-700 dark:text-white`}>
               No Products Found
             </h2>
           </div>
@@ -69,7 +69,7 @@ const Menu = async ({ searchParams }: { searchParams: Promise<{ search?: string 
       <section className=' w-full mt-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 p-5 '>
         {
           products.length !== 0 && products.map((each) => (
-            <div key={each._id} className='relative bg-white rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
+            <div key={each._id} className='relative bg-white dark:bg-[#1A1C22] rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
 
 
               <div className='absolute top-4 right-4 z-20'>
@@ -95,7 +95,7 @@ const Menu = async ({ searchParams }: { searchParams: Promise<{ search?: string 
 
                 <Link href={`/dashboard/menu/${each._id}`}>
                   <div className='flex flex-col gap-2 text-center'>
-                    <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800`}>
+                    <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800 dark:text-white`}>
                       {each.title}
                     </h2>
 

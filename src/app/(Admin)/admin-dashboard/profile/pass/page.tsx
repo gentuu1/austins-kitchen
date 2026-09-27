@@ -48,7 +48,7 @@ const EditpassWord = () => {
      })    
     return (
         
-        <div className="min-h-screen bg-zinc-50 px-5 py-8 md:px-10 md:py-10">
+        <div className="min-h-screen px-5 py-8 md:px-10 md:py-10">
 
             {/* Header */}
             <div className="w-full max-w-2xl mx-auto">
@@ -56,11 +56,11 @@ const EditpassWord = () => {
                 <div className="flex items-center justify-between mb-7">
 
                     <div>
-                        <h1 className={`${anton.className} text-2xl md:text-3xl text-gray-900`}>
+                        <h1 className={`${anton.className} text-2xl md:text-3xl text-gray-900 dark:text-[#D2D3DB]`}>
                             Change password
                         </h1>
 
-                        <p className="text-sm md:text-base text-gray-500 mt-1">
+                        <p className="text-sm md:text-base text-gray-500 dark:text-gray-400  mt-1">
                             Update your password to keep your account secure.
                         </p>
                     </div>
@@ -68,23 +68,23 @@ const EditpassWord = () => {
                     <button
                         onClick={() => router.push('/admin-dashboard/profile')}
                         type="button"
-                        className="size-9 rounded-full flex items-center justify-center hover:bg-white hover:shadow-sm transition cursor-pointer"
+                        className="size-9 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-500 hover:shadow-sm transition cursor-pointer"
                     >
-                        <FaTimes className="text-lg text-gray-500" />
+                        <FaTimes className="text-lg text-gray-500 dark:text-gray-400" />
                     </button>
 
                 </div>
 
 
                 {/* Form */}
-                <form onSubmit={formik.handleSubmit} className="w-full bg-white rounded-2xl shadow-sm border border-neutral-200 p-5 md:p-7">
+                <form onSubmit={formik.handleSubmit} className="w-full bg-white rounded-2xl shadow-sm border border-neutral-200 dark:border-gray-700 dark:bg-[#1A1C22] p-5 md:p-7 ">
 
                     <div className="space-y-4">
 
                         <div>
                             <label
                                 htmlFor="currentPassword"
-                                className="block text-sm font-medium text-gray-700 mb-1.5"
+                                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
                             >
                                 Current password
                             </label>
@@ -97,7 +97,7 @@ const EditpassWord = () => {
                                     name="currentPassword"
                                     type="password"
                                     placeholder="Enter your current password"
-                                    className="w-full h-11 px-3 border border-neutral-300 rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition"
+                                    className="w-full h-11 px-3 border border-neutral-300 dark:border-gray-600 dark:bg-white/10 dark:text-white rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition"
                                 />
                                 {
                                     formik.errors.currentPassword && (
@@ -110,7 +110,7 @@ const EditpassWord = () => {
                         <div>
                             <label
                                 htmlFor="newPassword"
-                                className="block text-sm font-medium text-gray-700 mb-1.5"
+                                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
                             >
                                 New password
                             </label>
@@ -125,7 +125,7 @@ const EditpassWord = () => {
                                         name="newPassword"
                                         type={showPassword ? "text" : "password"}
                                         placeholder="Enter your new password"
-                                        className="w-full h-11 px-3 pr-10 border border-neutral-300 rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition"
+                                        className="w-full h-11 px-3 pr-10 border border-neutral-300 dark:border-gray-600 dark:bg-white/10 dark:text-white rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition"
                                     />
 
                                     <button
@@ -151,7 +151,7 @@ const EditpassWord = () => {
                         <div>
                             <label
                                 htmlFor="confirmPassword"
-                                className="block text-sm font-medium text-gray-700 mb-1.5"
+                                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
                             >
                                 Confirm new password
                             </label>
@@ -164,7 +164,7 @@ const EditpassWord = () => {
                                     name="confirmPassword"
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Confirm your new password"
-                                    className="w-full h-11 px-3 border border-neutral-300 rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition"
+                                    className="w-full h-11 px-3 border border-neutral-300 dark:border-gray-600 dark:bg-white/10 dark:text-white rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition"
                                 />
                                 {
                                     formik.errors.confirmPassword && (
@@ -183,7 +183,7 @@ const EditpassWord = () => {
                         <button
                             onClick={() => router.push('/admin-dashboard/profile')}
                             type="button"
-                            className="flex-1 h-11 rounded-lg border border-neutral-300 text-gray-700 font-medium hover:bg-gray-50 transition cursor-pointer"
+                            className="flex-1 h-11 rounded-lg border border-neutral-300 dark:border-neutral-500 dark:bg-gray-600 dark:text-white text-gray-700 font-medium hover:bg-gray-50 dark:hover:bg-gray-500 transition cursor-pointer"
                         >
                             Cancel
                         </button>

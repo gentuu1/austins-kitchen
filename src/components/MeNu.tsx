@@ -46,26 +46,24 @@ const MeNu = () => {
             </div>
 
             <div className="w-full flex flex-col my-5 items-center justify-center space-y-3">
-                <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight`}>
+                <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight dark:text-[#D2D3DB]`}>
                     OUR-MENU
                 </h1>
 
-                <p className={`text-center text-sm tracking-tight`}>
+                <p className={`text-center text-sm tracking-tight text-gray-300 dark:text-gray-400`}>
                     <a className='underline hover:text-[#ED8F0C]' href="/">Home</a>/Our-menu
                 </p>
 
             </div>
 
-            <section className=' w-full  grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 p-5 '>
+            <section className='w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 p-5'>
                 {
                     products.length !== 0 && products.map((each) => (
-                        <div key={each._id} className='relative bg-white rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
-
+                        <div key={each._id} className='relative bg-white dark:bg-[#1A1C22] rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
 
                             <div className='absolute top-4 right-4 z-20'>
                                 <Favourite id={each._id} />
                             </div>
-
 
                             <Link href={`/menu/${each._id}`}>
                                 <div className='w-full h-40 md:h-44 lg:h-40 rounded-xl overflow-hidden'>
@@ -80,12 +78,11 @@ const MeNu = () => {
                                 </div>
                             </Link>
 
-
                             <div className='flex flex-col gap-2 text-center'>
 
                                 <Link href={`/menu/${each._id}`}>
                                     <div className='flex flex-col gap-2 text-center'>
-                                        <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800`}>
+                                        <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800 dark:text-white`}>
                                             {each.title}
                                         </h2>
 

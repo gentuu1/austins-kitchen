@@ -81,7 +81,7 @@ const ChangeAdminemail = () => {
         })
     })
   return (
-      <div className="min-h-screen bg-zinc-50 px-5 py-8 md:px-10 md:py-10">
+      <div className="min-h-screen px-5 py-8 md:px-10 md:py-10">
 
           
           <div className="w-full max-w-2xl mx-auto">
@@ -89,11 +89,11 @@ const ChangeAdminemail = () => {
               <div className="flex items-center justify-between mb-7">
 
                   <div>
-                      <h1 className={`${anton.className} text-2xl md:text-3xl text-gray-900`}>
+                      <h1 className={`${anton.className} text-2xl md:text-3xl text-gray-900 dark:text-[#D2D3DB]`}>
                           Change email address
                       </h1>
 
-                      <p className="text-sm md:text-base text-gray-500 mt-1">
+                      <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mt-1">
                           Verify your new email address before updating your admin account.
                       </p>
                   </div>
@@ -101,21 +101,21 @@ const ChangeAdminemail = () => {
                   <button
                       onClick={() => router.push('/admin-dashboard/profile')}
                       type="button"
-                      className="size-9 rounded-full flex items-center justify-center hover:bg-white hover:shadow-sm transition cursor-pointer"
+                      className="size-9 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-500 hover:shadow-sm transition cursor-pointer"
                   >
-                      <FaTimes className="text-lg text-gray-500" />
+                      <FaTimes className="text-lg text-gray-500 dark:text-gray-400" />
                   </button>
 
               </div>
 
 
-              <div className="w-full bg-white rounded-2xl shadow-sm border border-neutral-200 p-5 md:p-7">
+              <div className="w-full bg-white rounded-2xl shadow-sm border border-neutral-200 dark:bg-[#1A1C22] dark:border-gray-700 p-5 md:p-7">
 
                   <div className="space-y-4">
                       <div>
                           <label
                               htmlFor="newEmail"
-                              className="block text-sm font-medium text-gray-700 mb-1.5"
+                              className="block text-sm font-medium text-gray-700 mb-1.5 dark:text-gray-300"
                           >
                               New email address
                           </label>
@@ -133,7 +133,7 @@ const ChangeAdminemail = () => {
                                   className={`${disableEmailinput
                                           ? 'bg-gray-100 cursor-not-allowed'
                                           : ''
-                                      } w-full h-11 px-3 border border-neutral-300 rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition`}
+                                      } w-full h-11 px-3 border border-neutral-300 dark:border-gray-600 dark:bg-white/10 dark:text-white rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition`}
                               />
 
                               {
@@ -152,7 +152,7 @@ const ChangeAdminemail = () => {
 
                           <label
                               htmlFor="otp"
-                              className="block text-sm font-medium text-gray-700 mb-1.5"
+                              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
                           >
                               Verification code
                           </label>
@@ -170,9 +170,9 @@ const ChangeAdminemail = () => {
                                       type="text"
                                       placeholder="Enter verification code"
                                       className={`${!otpsent
-                                              ? 'bg-gray-100 cursor-not-allowed'
-                                              : ''
-                                          } flex-1 h-11 px-3 border border-neutral-300 rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition`}
+                                          ? 'bg-gray-100 dark:bg-gray-800 cursor-not-allowed'
+                                          : 'dark:bg-white/10'
+                                          } flex-1 h-11 px-3 border border-neutral-300 dark:border-gray-600  dark:text-white rounded-lg outline-none focus:border-[#ED8F0C] focus:ring-1 focus:ring-[#ED8F0C]/20 transition`}
                                   />
 
                                   <button
@@ -217,7 +217,7 @@ const ChangeAdminemail = () => {
                       <button
                           type="button"
                           onClick={() => router.push('/admin-dashboard/profile')}
-                          className="flex-1 h-11 rounded-lg border border-neutral-300 text-gray-700 font-medium hover:bg-gray-50 transition cursor-pointer"
+                          className="flex-1 h-11 rounded-lg border border-neutral-300 dark:border-neutral-500 dark:bg-gray-600 text-gray-700 dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-gray-500 transition cursor-pointer"
                       >
                           Cancel
                       </button>

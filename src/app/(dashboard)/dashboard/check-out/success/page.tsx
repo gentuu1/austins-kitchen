@@ -76,41 +76,41 @@ const Success = () => {
         if(isSpinner) return <Spinner/>
    
         return (
-            <div className="min-h-screen bg-zinc-50 flex items-center justify-center p-5">
+            <div className="min-h-screen bg-zinc-50 dark:bg-[#23232C] flex items-center justify-center p-5">
 
-                <div className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-8">
+                <div className="w-full max-w-2xl bg-white dark:bg-[#1A1C22] rounded-3xl shadow-2xl p-8">
 
                     <div className="flex justify-center">
-                        <div className="w-28 h-28 rounded-full bg-green-100 flex items-center justify-center animate-pulse">
+                        <div className="w-28 h-28 rounded-full bg-green-100 dark:bg-green-950/40 flex items-center justify-center animate-pulse">
                             <FaCheckCircle className="text-6xl text-green-600" />
                         </div>
                     </div>
 
                     <div className="text-center mt-6">
                         <h1
-                            className={`${anton.className} text-4xl tracking-wide text-[#3E4C59]`}
+                            className={`${anton.className} text-4xl tracking-wide text-[#3E4C59] dark:text-white`}
                         >
-                           {order?.message}
+                            {order?.message}
                         </h1>
 
-                        <p className="text-gray-500 mt-3 text-md">
+                        <p className="text-gray-500 dark:text-gray-400 mt-3 text-md">
                             Thank you for ordering from Austin Kitchen.
                             <br />
                             Your payment was successful and your order has been received.
                         </p>
                     </div>
 
-                    <div className="mt-10 rounded-2xl border border-gray-200 overflow-hidden">
+                    <div className="mt-10 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
 
-                        <div className="flex justify-between p-5 border-b">
-                            <span className="font-semibold text-gray-500">Order ID</span>
-                            <span className={`${anton.className}`}>
+                        <div className="flex justify-between p-5 border-b dark:border-gray-700">
+                            <span className="font-semibold text-gray-500 dark:text-gray-400">Order ID</span>
+                            <span className={`${anton.className} dark:text-gray-200`}>
                                 #AK-{(order?._id)?.slice(0, 8).toUpperCase()}
                             </span>
                         </div>
 
-                        <div className="flex justify-between p-5 border-b">
-                            <span className="font-semibold text-gray-500">
+                        <div className="flex justify-between p-5 border-b dark:border-gray-700">
+                            <span className="font-semibold text-gray-500 dark:text-gray-400">
                                 Total Paid
                             </span>
 
@@ -122,11 +122,11 @@ const Success = () => {
                         </div>
 
                         <div className="flex justify-between p-5">
-                            <span className="font-semibold text-gray-500">
+                            <span className="font-semibold text-gray-500 dark:text-gray-400">
                                 Payment Status
                             </span>
 
-                            <span className="text-green-600 font-semibold">
+                            <span className="text-green-600 dark:text-green-400 font-semibold">
                                 {order.paymentStatus === "success"
                                     ? "Paid"
                                     : order.paymentStatus}
@@ -136,15 +136,15 @@ const Success = () => {
                     </div>
 
                     <div className="flex flex-col mt-8">
-                        <div className="bg-orange-50 rounded-xl p-5 flex items-center gap-4">
+                        <div className="bg-orange-50 dark:bg-orange-950/30 rounded-xl p-5 flex items-center gap-4">
 
                             <div className="bg-[#ED8F0C]/20 p-3 rounded-full">
                                 <FaMotorcycle className="text-[#ED8F0C] text-xl" />
                             </div>
 
                             <div>
-                                <p className="font-semibold">Current Status</p>
-                                <p className="text-orange-600 capitalize">
+                                <p className="font-semibold dark:text-white">Current Status</p>
+                                <p className="text-orange-600 dark:text-orange-400 capitalize">
                                     {order?.status}
                                 </p>
                             </div>
@@ -155,7 +155,7 @@ const Success = () => {
 
                     <div className="mt-10">
 
-                        <h2 className="font-bold text-lg mb-5">
+                        <h2 className="font-bold text-lg mb-5 dark:text-white">
                             Order Progress
                         </h2>
 
@@ -163,12 +163,12 @@ const Success = () => {
 
                             <div className="flex items-center gap-4">
                                 <div className="w-5 h-5 rounded-full bg-green-500"></div>
-                                <p>Order Received</p>
+                                <p className="dark:text-gray-200">Order Received</p>
                             </div>
 
                             <div className="flex items-center gap-4">
                                 <div className="w-5 h-5 rounded-full bg-green-500"></div>
-                                <p>Payment Confirmed</p>
+                                <p className="dark:text-gray-200">Payment Confirmed</p>
                             </div>
 
                         </div>
@@ -190,7 +190,7 @@ const Success = () => {
                             href="/dashboard/menu"
                             className="flex-1"
                         >
-                            <button className="w-full border-2 border-[#ED8F0C] text-[#ED8F0C] py-4 rounded-xl hover:bg-orange-50 transition font-semibold cursor-pointer">
+                            <button className="w-full border-2 border-[#ED8F0C] text-[#ED8F0C] py-4 rounded-xl hover:bg-orange-50 dark:hover:bg-orange-950/30 transition font-semibold cursor-pointer">
                                 Continue Shopping
                             </button>
                         </Link>

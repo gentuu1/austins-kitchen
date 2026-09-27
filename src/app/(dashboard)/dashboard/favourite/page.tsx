@@ -33,21 +33,21 @@ const Favourite = () => {
                 <ProfileNavbar />
             </div>
             <div className='md:hidden p-5'>
-                <h1 className={`${anton.className} text-3xl font-bold tracking-wide`}>Favourites</h1>
+                <h1 className={`${anton.className} text-3xl font-bold tracking-wide dark:text-white`}>Favourites</h1>
             </div>
 
             {
                 fav.length === 0 ? (
                     <div className='flex flex-col items-center justify-center min-h-[65vh] text-center'>
-                        <div className='w-28 h-28 rounded-full bg-orange-100 flex items-center justify-center mb-6'>
+                        <div className='w-28 h-28 rounded-full bg-orange-100 dark:bg-orange-950/40 flex items-center justify-center mb-6'>
                             <FaHeart className='text-5xl text-[#ED8F0C]' />
                         </div>
 
-                        <h2 className={`${anton.className} text-3xl tracking-wide text-gray-800`}>
+                        <h2 className={`${anton.className} text-3xl tracking-wide text-gray-800 dark:text-white`}>
                             No Favourite Products Yet
                         </h2>
 
-                        <p className='mt-3 text-gray-500 max-w-md leading-7'>
+                        <p className='mt-3 text-gray-500 dark:text-gray-400 max-w-md leading-7'>
                             You haven't added any products to your favourites.
                             Browse our menu and tap the heart icon to save your favourite meals.
                         </p>
@@ -56,7 +56,7 @@ const Favourite = () => {
                     <div className='w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 p-5 '>
                         {
                             fav.map((each) => (
-                                <div onClick={() => router.push(`/dashboard/menu/${each._id}`)} key={each._id} className='cursor-pointer bg-white rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
+                                <div onClick={() => router.push(`/dashboard/menu/${each._id}`)} key={each._id} className='cursor-pointer bg-white dark:bg-[#1A1C22] rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4'>
 
                                     <div className='w-full h-40 md:h-44 lg:h-40 rounded-xl overflow-hidden'>
                                         <Image
@@ -70,7 +70,7 @@ const Favourite = () => {
 
                                     <div className='flex flex-col gap-2 text-center'>
 
-                                        <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800`}>
+                                        <h2 className={`${anton.className} text-lg md:text-xl tracking-wide text-gray-800 dark:text-white`}>
                                             {each.title}
                                         </h2>
 
@@ -88,7 +88,7 @@ const Favourite = () => {
                                             <button onClick={(e) => {
                                                 e.stopPropagation()
                                                 removeSave(each._id)
-                                            }} className='cursor-pointer py-2.5 md:py-3 border border-red-400 text-red-500 rounded-lg text-sm md:text-base hover:bg-red-50 transition'>
+                                            }} className='cursor-pointer py-2.5 md:py-3 border border-red-400 text-red-500 rounded-lg text-sm md:text-base hover:bg-red-50 dark:hover:bg-red-950/40 transition'>
                                                 {
                                                     remove == each._id ? "Removing..." : 'Remove'
                                                 }

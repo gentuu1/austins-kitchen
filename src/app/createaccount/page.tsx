@@ -78,27 +78,27 @@ const Page = () => {
                 <NavBar />
             </div>
 
-            <section className="w-full lg:p-7 md:p-7 p-5 bg-[#FFFFFF]/95 backdrop-blur-xl mt-5">
+            <section className="w-full lg:p-7 md:p-7 p-5  backdrop-blur-xl mt-5">
 
                 <div className="w-full flex flex-col h-30 items-center justify-center space-y-3">
-                    <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight`}>
+                    <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight dark:text-[#D2D3DB]`}>
                         CREATE ACCOUNT
                     </h1>
 
-                    <p className={`text-center text-sm tracking-tight`}>
-                        <a className='underline hover:text-[#ED8F0C]' href="/">Home</a>/Create Account
+                    <p className={`text-center text-sm tracking-tight dark:text-gray-300`}>
+                        <a className='underline hover:text-[#ED8F0C] ' href="/">Home</a>/Create Account
                     </p>
                 </div>
 
                 <div className="w-full py-10 flex justify-center">
 
-                    <div className="w-full max-w-md rounded-2xl p-6 md:p-8 flex flex-col space-y-6 shadow-2xl">
+                    <div className="w-full max-w-md bg-slate-900/85 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] rounded-2xl p-6 md:p-8 flex flex-col space-y-6 shadow-2xl">
 
                         {/* Firstname & Lastname */}
                         <div className="flex gap-4">
 
                             <div className="flex flex-col space-y-2 w-1/2">
-                                <label className="text-sm font-medium">First name</label>
+                                <label className="text-sm font-medium text-gray-300">First name</label>
 
                                 <div className='leading-tight flex-col flex'>
                                     <input
@@ -108,10 +108,10 @@ const Page = () => {
                                         onChange={formik.handleChange}
                                         type="text"
                                         placeholder="First name"
-                                        className={`  border rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]`}
+                                        className={` border border-gray-600 bg-white/10 text-white rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]`}
                                     />
                                     {
-                                        formik.errors.firstName && (<small className='text-red-500 md:text-[8px] text-[10px]'>
+                                        formik.errors.firstName && (<small className='text-red-500 text-sm'>
                                             {formik.errors.firstName}
                                         </small>)
                                     }
@@ -119,7 +119,7 @@ const Page = () => {
                             </div>
 
                             <div className="flex flex-col space-y-2 w-1/2">
-                                <label className="text-sm font-medium">Last name</label>
+                                <label className="text-sm font-medium text-gray-300">Last name</label>
 
                                 <div className="leading-tight flex flex-col">
                                     <input
@@ -129,10 +129,10 @@ const Page = () => {
                                         onChange={formik.handleChange}
                                         type="text"
                                         placeholder="Last name"
-                                        className="border rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
+                                        className="border border-gray-600 bg-white/10 text-white rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
                                     />
                                     {
-                                        formik.errors.lastName && (<small className='text-red-500 md:text-[8px] text-[10px]'>
+                                        formik.errors.lastName && (<small className='text-red-500 text-sm'>
                                             {formik.errors.lastName}
                                         </small>)
                                     }
@@ -144,7 +144,7 @@ const Page = () => {
 
 
                         <div className="flex flex-col space-y-2">
-                            <label className="text-sm font-medium">Email address</label>
+                            <label className="text-sm font-medium text-gray-300">Email address</label>
 
                             <div className=' flex flex-col leading-tight'>
                                 <input
@@ -154,11 +154,11 @@ const Page = () => {
                                     onChange={formik.handleChange}
                                     type="email"
                                     placeholder="Enter your email"
-                                    className="border rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
+                                    className="border border-gray-600 bg-white/10 text-white rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
                                 />
 
                                 {
-                                    formik.errors.email && (<small className='text-red-500 md:text-[8px] text-[10px]'>
+                                    formik.errors.email && (<small className='text-red-500 text-sm'>
                                         {formik.errors.email}
                                     </small>)
                                 }
@@ -169,7 +169,7 @@ const Page = () => {
 
                         <div className="flex flex-col space-y-2">
 
-                            <label className="text-sm font-medium">Password</label>
+                            <label className="text-sm font-medium text-gray-300">Password</label>
 
                             <div className="leading-tight">
 
@@ -181,7 +181,7 @@ const Page = () => {
                                         onChange={formik.handleChange}
                                         type={showPassword ? "text" : "password"}
                                         placeholder="Enter your password"
-                                        className="border rounded-md p-3 w-full pr-10 focus:outline-none focus:border-[#ED8F0C]"
+                                        className="border border-gray-600 bg-white/10 text-white rounded-md p-3 w-full pr-10 focus:outline-none focus:border-[#ED8F0C]"
                                     />
 
                                     <button
@@ -193,7 +193,7 @@ const Page = () => {
                                     </button>
                                 </div>
                                 {
-                                    formik.errors.password && (<small className='text-red-500 md:text-[8px] text-[10px]'>
+                                    formik.errors.password && (<small className='text-red-500 text-sm'>
                                         {formik.errors.password}
                                     </small>)
                                 }
@@ -207,7 +207,7 @@ const Page = () => {
 
                         <div className="flex flex-col space-y-2">
 
-                            <label className="text-sm font-medium">Confirm password</label>
+                            <label className="text-sm font-medium text-gray-300">Confirm password</label>
 
                             <div className='flex flex-col leading-tight'>
                                 <input
@@ -217,10 +217,10 @@ const Page = () => {
                                     onBlur={formik.handleBlur}
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Confirm your password"
-                                    className="border rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
+                                    className="border border-gray-600 bg-white/10 text-white rounded-md p-3 focus:outline-none focus:border-[#ED8F0C]"
                                 />
                                 {
-                                    formik.errors.confirmPassword && (<small className='text-red-500 md:text-[8px] text-[10px]'>
+                                    formik.errors.confirmPassword && (<small className='text-red-500 text-sm'>
                                         {formik.errors.confirmPassword}
                                     </small>)
                                 }
@@ -230,7 +230,7 @@ const Page = () => {
 
 
 
-                        <button type='button' onClick={() => formik.handleSubmit()} className="flex justify-center bg-[#ED8F0C] text-white p-3 rounded-md hover:opacity-90 transition ">
+                        <button type='button' onClick={() => formik.handleSubmit()} className="flex justify-center border border-[#F97316]  bg-[#ED8F0C] text-white p-3 rounded-md hover:opacity-90 transition ">
                             {
                                 isLoading ? (
                                     <FaSpinner className="text-lg animate-spin" />
@@ -240,7 +240,7 @@ const Page = () => {
 
 
 
-                        <p className="text-center text-sm text-gray-600">
+                        <p className="text-center text-sm text-gray-400">
                             Already have an account?{" "}
                             <a
                                 href="/signin"

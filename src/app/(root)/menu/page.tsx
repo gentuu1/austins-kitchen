@@ -1,10 +1,13 @@
+import Footer from "@/components/Footer"
 import MeNu from "@/components/MeNu"
 const Menu = () => {
 
     return (
-        <div className="bg-zinc-50">
+        <div className="min-h-screen">
 
            <MeNu/>
+
+           <Footer />
         </div>
     )
 }

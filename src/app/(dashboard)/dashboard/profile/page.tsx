@@ -138,7 +138,7 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50">
+    <div className="min-h-screen ">
 
       <div className="sticky top-0 w-full z-50">
         <ProfileNavbar />
@@ -146,23 +146,23 @@ const Page = () => {
 
       <main className="w-full max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12">
 
-        {/* Page heading */}
+        
         <div className="mb-8">
           <p className="text-sm text-[#ED8F0C] font-semibold mb-1">
             ACCOUNT
           </p>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1F2933]">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1F2933] dark:text-white">
             Profile
           </h1>
 
-          <p className="text-gray-500 mt-2 text-sm md:text-base">
+          <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm md:text-base">
             Manage your personal information and account settings.
           </p>
         </div>
 
 
-        <section className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <section className="bg-white dark:bg-[#1A1C22] rounded-2xl shadow-sm overflow-hidden">
 
           <div className="h-24  md:h-32 bg-[#1F2933]/90 " />
 
@@ -184,11 +184,11 @@ const Page = () => {
                 </div>
 
                 <div className="pb-1">
-                  <h2 className="text-xl md:text-2xl font-bold text-[#1F2933]">
+                  <h2 className="text-xl md:text-2xl font-bold text-[#1F2933] dark:text-white">
                     Welcome back
                   </h2>
 
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Manage your account
                   </p>
                 </div>
@@ -212,9 +212,9 @@ const Page = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
 
-          <section className="lg:col-span-2 bg-white rounded-2xl  shadow-sm">
+          <section className="lg:col-span-2 bg-white dark:bg-[#1A1C22] rounded-2xl  shadow-sm">
 
-            <div className="px-5 md:px-7 py-5 border-b border-neutral-200 flex items-center justify-between">
+            <div className="px-5 md:px-7 py-5 border-b border-neutral-200 dark:border-gray-700 flex items-center justify-between">
 
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full bg-[#ED8F0C]/10 flex items-center justify-center">
@@ -222,11 +222,11 @@ const Page = () => {
                 </div>
 
                 <div>
-                  <h2 className="font-bold text-lg text-[#1F2933]">
+                  <h2 className="font-bold text-lg text-[#1F2933] dark:text-white">
                     Personal information
                   </h2>
 
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Your basic account details
                   </p>
                 </div>
@@ -245,12 +245,12 @@ const Page = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2">
 
-              <div className="p-5 md:p-7 border-b md:border-r border-neutral-200">
+              <div className="p-5 md:p-7 border-b md:border-r border-neutral-200 dark:border-gray-700">
                 <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
                   First name
                 </p>
 
-                <p className="font-medium text-gray-800 capitalize">
+                <p className="font-medium text-gray-800 dark:text-gray-200 capitalize">
                   {user_pro?.firstName}
                 </p>
 
@@ -258,23 +258,23 @@ const Page = () => {
               </div>
 
 
-              <div className="p-5 md:p-7 border-b border-neutral-200">
+              <div className="p-5 md:p-7 border-b border-neutral-200 dark:border-gray-700">
                 <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
                   Last name
                 </p>
 
-                <p className="font-medium text-gray-800 capitalize">
+                <p className="font-medium text-gray-800 dark:text-gray-200 capitalize">
                   {user_pro?.lastName}
                 </p>
               </div>
 
 
-              <div className="p-5 md:p-7 border-b md:border-b-0 md:border-r border-neutral-200">
+              <div className="p-5 md:p-7 border-b md:border-b-0 md:border-r border-neutral-200 dark:border-gray-700">
                 <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
                   Email
                 </p>
 
-                <p className="font-medium text-gray-800 break-all capitalize">
+                <p className="font-medium text-gray-800 dark:text-gray-200 break-all capitalize">
                   {user_pro?.email}
                 </p>
               </div>
@@ -285,7 +285,7 @@ const Page = () => {
                   Phone number
                 </p>
 
-                <p className="font-medium text-gray-800">
+                <p className="font-medium text-gray-800 dark:text-gray-200">
                   {user_pro?.phoneNumber ? `${user_pro?.phoneNumber}` : '0000 000 0000'}
                 </p>
               </div>
@@ -296,20 +296,20 @@ const Page = () => {
 
 
 
-          <section className="bg-white rounded-2xl  shadow-sm h-fit">
+          <section className="bg-white dark:bg-[#1A1C22] rounded-2xl  shadow-sm h-fit">
 
-            <div className="px-5 py-5 border-b border-neutral-200 flex items-center gap-3">
+            <div className="px-5 py-5 border-b border-neutral-200 dark:border-gray-700 flex items-center gap-3">
 
               <div className="size-10 rounded-full bg-[#ED8F0C]/10 flex items-center justify-center">
                 <FaShoppingBag className="text-[#ED8F0C]" />
               </div>
 
               <div>
-                <h2 className="font-bold text-lg text-[#1F2933]">
+                <h2 className="font-bold text-lg text-[#1F2933] dark:text-white">
                   Orders
                 </h2>
 
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   Your order activity
                 </p>
               </div>
@@ -319,14 +319,14 @@ const Page = () => {
 
             <div className="p-5" >
 
-              <div className="flex justify-between items-center pb-5 border-b border-neutral-200">
+              <div className="flex justify-between items-center pb-5 border-b border-neutral-200 dark:border-gray-700">
 
                 <div>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Total orders
                   </p>
 
-                  <p className="text-3xl font-bold text-[#1F2933] mt-1">
+                  <p className="text-3xl font-bold text-[#1F2933] dark:text-white mt-1">
                     {toTalordNum}
                   </p>
                 </div>
@@ -337,10 +337,10 @@ const Page = () => {
 
               </div>
 
-              <div className="flex justify-between items-center pb-5 border-b border-neutral-200 mt-1">
+              <div className="flex justify-between items-center pb-5 border-b border-neutral-200 dark:border-gray-700 mt-1">
 
                 <div>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     Amount spent
                   </p>
 
@@ -359,13 +359,13 @@ const Page = () => {
               <button
                 onClick={() => router.push('/dashboard/order-history')}
                 type="button"
-                className="w-full mt-5 flex items-center justify-between py-3 px-4 rounded-lg bg-[#f7f7f7] hover:bg-[#ED8F0C]/10 transition cursor-pointer"
+                className="w-full mt-5 flex items-center justify-between py-3 px-4 rounded-lg bg-[#f7f7f7] dark:bg-gray-800 hover:bg-[#ED8F0C]/10 dark:hover:bg-gray-700 transition cursor-pointer"
               >
-                <span className="font-medium text-gray-700">
+                <span className="font-medium text-gray-700 dark:text-gray-200">
                   View order history
                 </span>
 
-                <MdKeyboardArrowRight className="text-xl text-gray-500" />
+                <MdKeyboardArrowRight className="text-xl text-gray-500 dark:text-gray-400" />
               </button>
 
             </div>
@@ -375,15 +375,15 @@ const Page = () => {
         </div>
 
         {/* Account settings */}
-        <section className="bg-white rounded-2xl shadow-sm mt-6 mb-8">
+        <section className="bg-white dark:bg-[#1A1C22] rounded-2xl shadow-sm mt-6 mb-8">
 
-          <div className="px-5 md:px-7 py-5 border-b border-neutral-200">
+          <div className="px-5 md:px-7 py-5 border-b border-neutral-200 dark:border-gray-700">
 
-            <h2 className="font-bold text-lg text-[#1F2933]">
+            <h2 className="font-bold text-lg text-[#1F2933] dark:text-white">
               Account & security
             </h2>
 
-            <p className="text-xl text-gray-500 mt-1">
+            <p className="text-xl text-gray-500 dark:text-gray-400 mt-1">
               Manage your account preferences
             </p>
 
@@ -395,21 +395,21 @@ const Page = () => {
             <button
               onClick={() => router.push('/dashboard/profile/pass&security')}
               type="button"
-              className="w-full px-5 md:px-7 py-5 flex items-center justify-between hover:bg-gray-50 transition cursor-pointer border-b border-neutral-200"
+              className="w-full px-5 md:px-7 py-5 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition cursor-pointer border-b border-neutral-200 dark:border-gray-700"
             >
 
               <div className="flex items-center gap-4">
 
-                <div className="size-10 rounded-full bg-gray-100 flex items-center justify-center">
-                  <MdLockOutline className="text-xl text-gray-600" />
+                <div className="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                  <MdLockOutline className="text-xl text-gray-600 dark:text-gray-300" />
                 </div>
 
                 <div className="text-left">
-                  <p className="font-medium text-gray-800">
+                  <p className="font-medium text-gray-800 dark:text-white">
                     Change password & email
                   </p>
 
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     Update your account password and email
                   </p>
                 </div>
@@ -424,12 +424,12 @@ const Page = () => {
             <button
               onClick={logout}
               type="button"
-              className="w-full px-5 md:px-7 py-5 flex items-center justify-between hover:bg-red-50 transition cursor-pointer"
+              className="w-full px-5 md:px-7 py-5 flex items-center justify-between hover:bg-red-50 dark:hover:bg-red-950/40 transition cursor-pointer"
             >
 
               <div className="flex items-center gap-4">
 
-                <div className="size-10 rounded-full bg-red-50 flex items-center justify-center">
+                <div className="size-10 rounded-full bg-red-50 dark:bg-red-950/40 flex items-center justify-center">
                   <MdLogout className="text-xl text-red-500" />
                 </div>
 
@@ -438,7 +438,7 @@ const Page = () => {
                     Log out
                   </p>
 
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     Sign out of your account
                   </p>
                 </div>
@@ -453,11 +453,11 @@ const Page = () => {
             <button
               onClick={() => setopenDeleteAcc(true)}
               type="button"
-              className="w-full px-5 md:px-7 py-5 flex items-center justify-between hover:bg-red-50 transition cursor-pointer"
+              className="w-full px-5 md:px-7 py-5 flex items-center justify-between hover:bg-red-50 dark:hover:bg-red-950/40 transition cursor-pointer"
             >
               <div className="flex items-center gap-4">
 
-                <div className="size-10 rounded-full bg-red-50 flex items-center justify-center">
+                <div className="size-10 rounded-full bg-red-50 dark:bg-red-950/40 flex items-center justify-center">
                   <MdDelete className="text-xl text-red-500" />
                 </div>
 
@@ -466,7 +466,7 @@ const Page = () => {
                     Delete account
                   </p>
 
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     Permanently delete your account and all your data
                   </p>
                 </div>
@@ -490,18 +490,18 @@ const Page = () => {
       >
 
         <div
-          className="bg-white w-full max-w-lg rounded-2xl shadow-xl overflow-hidden"
+          className="bg-white dark:bg-[#1A1C22] w-full max-w-lg rounded-2xl shadow-xl overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
 
-          <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-200">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-200 dark:border-gray-700">
 
             <div>
-              <h2 className="text-xl font-bold text-[#1F2933]">
+              <h2 className="text-xl font-bold text-[#1F2933] dark:text-white">
                 Edit profile
               </h2>
 
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 Update your personal information
               </p>
             </div>
@@ -509,9 +509,9 @@ const Page = () => {
             <button
               type="button"
               onClick={() => seteditbasic(false)}
-              className="size-9 rounded-full hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+              className="size-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center cursor-pointer"
             >
-              <MdClose className="text-xl text-gray-600" />
+              <MdClose className="text-xl text-gray-600 dark:text-gray-300" />
             </button>
 
           </div>
@@ -524,7 +524,7 @@ const Page = () => {
               <div className="relative">
                 <input type="file" onChange={handleEditImg} id="profilePi" className='hidden' />
 
-                <div className="size-24 rounded-full overflow-hidden border border-neutral-200">
+                <div className="size-24 rounded-full overflow-hidden border border-neutral-200 dark:border-gray-700">
                   <Image
                     src={prev || "/img/profileimage.jpg"}
                     alt="Profile"
@@ -537,7 +537,7 @@ const Page = () => {
 
                 <label
                   htmlFor="profilePi"
-                  className="absolute bottom-0 right-0 size-8 rounded-full bg-[#ED8F0C] text-white flex items-center justify-center border-2 border-white cursor-pointer"
+                  className="absolute bottom-0 right-0 size-8 rounded-full bg-[#ED8F0C] text-white flex items-center justify-center border-2 border-white dark:border-[#1A1C22] cursor-pointer"
                 >
                   <MdEdit />
                 </label>
@@ -548,7 +548,7 @@ const Page = () => {
             <div className="grid grid-cols-2 gap-3">
 
               <div>
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   First name
                 </label>
 
@@ -558,7 +558,7 @@ const Page = () => {
                     value={editFormik.values.firstName}
                     name='firstName'
                     type="text"
-                    className="mt-1 w-full h-11 border border-neutral-300 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
+                    className="mt-1 w-full h-11 border border-neutral-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
                   />
                   {
                     editFormik.errors.firstName && (
@@ -570,7 +570,7 @@ const Page = () => {
 
 
               <div>
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Last name
                 </label>
 
@@ -580,7 +580,7 @@ const Page = () => {
                     value={editFormik.values.lastName}
                     name='lastName'
                     type="text"
-                    className="mt-1 w-full h-11 border border-neutral-300 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
+                    className="mt-1 w-full h-11 border border-neutral-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
                   />
                   {
                     editFormik.errors.lastName && (
@@ -594,7 +594,7 @@ const Page = () => {
 
 
             <div>
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Email address
               </label>
 
@@ -603,7 +603,7 @@ const Page = () => {
                   disabled={true}
                   type="email"
                   value={`${editFormik.values.email}`}
-                  className="mt-1 w-full h-11 border cursor-not-allowed border-neutral-400 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
+                  className="mt-1 w-full h-11 border cursor-not-allowed border-neutral-400 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
                 />
                 {
                   editFormik.errors.email && (
@@ -615,7 +615,7 @@ const Page = () => {
 
 
             <div>
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Phone number
               </label>
 
@@ -624,7 +624,7 @@ const Page = () => {
                 value={editFormik.values.phoneNumber}
                 name='phoneNumber'
                 type='number'
-                className="mt-1 w-full h-11 border border-neutral-300 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
+                className="mt-1 w-full h-11 border border-neutral-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-lg px-3 outline-none focus:border-[#ED8F0C]"
               />
             </div>
 
@@ -634,7 +634,7 @@ const Page = () => {
               <button
                 type="button"
                 onClick={() => seteditbasic(false)}
-                className="flex-1 h-11 rounded-lg border border-neutral-300 text-gray-700 font-medium hover:bg-gray-50 transition cursor-pointer"
+                className="flex-1 h-11 rounded-lg border border-neutral-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition cursor-pointer"
               >
                 Cancel
               </button>
@@ -661,20 +661,20 @@ const Page = () => {
 
       <div className={`${openDeleteAcc ? 'fixed' : 'hidden'} fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4`}>
 
-        <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-7">
+        <div className="w-full max-w-md rounded-2xl bg-white dark:bg-[#1A1C22] p-6 shadow-2xl sm:p-7">
 
           <div className="mb-5 text-center">
-            <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-red-100">
+            <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-950/40">
               <span className="text-2xl text-[#C91737]">!</span>
             </div>
 
-            <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
               Delete Account
             </h2>
           </div>
 
           <div className="mb-4 text-center">
-            <p className="md:text-sm leading-6 text-gray-600 sm:text-base">
+            <p className="md:text-sm leading-6 text-gray-600 dark:text-gray-400 sm:text-base">
               Are you sure you want to delete your account?
             </p>
 
@@ -690,7 +690,7 @@ const Page = () => {
               type="button"
               disabled={isPending}
               onClick={() => setopenDeleteAcc(false)}
-              className="h-11 py-3 flex-1 rounded-xl bg-gray-100 px-4 font-semibold cursor-pointer text-gray-700 transition hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-11 py-3 flex-1 rounded-xl bg-gray-100 dark:bg-gray-800 px-4 font-semibold cursor-pointer text-gray-700 dark:text-gray-200 transition hover:bg-gray-200 dark:hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Cancel
             </button>
@@ -701,7 +701,7 @@ const Page = () => {
               disabled={isPending}
               className="h-11 py-3 flex items-center justify-center flex-1 rounded-xl bg-[#C91737] hover:bg-[#dd546e] cursor-pointer px-4 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {isPending ? (<FaSpinner size={15} className='animate-spin'/>): "Delete Account"}
+              {isPending ? (<FaSpinner size={15} className='animate-spin' />) : "Delete Account"}
             </button>
 
           </div>

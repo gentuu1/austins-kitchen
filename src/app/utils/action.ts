@@ -18,6 +18,7 @@ import { ImInsertTemplate } from "react-icons/im"
 import { landingImageModel } from "../models/landingimages"
 import { TbBackground } from "react-icons/tb"
 import { ObjectId } from "mongoose"
+import { businessInfoModel } from "../models/businessinfo"
 const otpGenerator = require('otp-generator')
 const nodemailer = require("nodemailer");
 
@@ -429,6 +430,7 @@ export const addProduct = async (data: {
             }
         }
 
+        let publicId;
 
         if (data.image) {
             const productImage = await cloudinary.uploader.upload(data.image, {
@@ -439,7 +441,10 @@ export const addProduct = async (data: {
             })
 
             data.image = productImage?.secure_url
+            publicId = productImage?.public_id
         }
+
+
 
         if (user.role !== "admin") {
             return {
@@ -453,7 +458,8 @@ export const addProduct = async (data: {
             title: data.title,
             description: data.description,
             status: data.status,
-            image: data.image
+            image: data.image,
+            publicId
         }
 
         const pr = await productModel.create(product)
@@ -644,7 +650,7 @@ export const deleTeProduct = async (_id: string) => {
             }
         }
 
-        const product = await productModel.findByIdAndDelete(_id);
+        const product = await productModel.findById(_id);
 
         if (!product) {
             return {
@@ -652,6 +658,9 @@ export const deleTeProduct = async (_id: string) => {
                 message: "Unable to delete product"
             }
         }
+
+        if (!product.publicId) return { success: false, message: "Public Id not found" }
+
 
         await savedProductModel.deleteMany({ productId: _id })
 
@@ -662,6 +671,10 @@ export const deleTeProduct = async (_id: string) => {
                 }
             }
         })
+
+        await cloudinary.uploader.destroy(product.publicId)
+
+        await product.deleteOne()
 
         revalidatePath('/admin-dashboard/products')
         return {
@@ -850,8 +863,12 @@ export const fetchCart = async () => {
         await dbConnect();
         const { success, _id } = await auth();
 
+
         if (!success) {
-            redirect('/signin')
+            return {
+                success: false,
+                items: []
+            }
         }
 
         const isCart = await cartModel.findOne({ userId: _id }).populate('items.productId');
@@ -1262,7 +1279,7 @@ export const iniPayment = async (details: {
                 body: JSON.stringify({
                     email: user.email,
                     amount: totalAmount * 100,
-                    callback_url: "http://localhost:3000/dashboard/check-out/success",
+                    callback_url: "https://austins-kitchen.vercel.app/dashboard/check-out/success",
                     metadata: {
                         presvDetails
                     }
@@ -1908,7 +1925,7 @@ export const customers = async () => {
             message: "You're not authorized!"
         }
 
-        const users = await userModel.find({ role: 'user' }).sort({ _id: -1 }).select('_id amountSpent profilePic firstName lastName email')
+        const users = await userModel.find({ role: 'user' }).sort({ _id: -1 }).select('_id amountSpent profilePic firstName lastName email phoneNumber')
 
         const cstMer = users.map((user) => ({
             _id: user._id.toString(),
@@ -1916,7 +1933,8 @@ export const customers = async () => {
             lastName: user.lastName,
             amountSpent: user.amountSpent,
             email: user.email,
-            profilePic: user.profilePic
+            profilePic: user.profilePic,
+            phoneNumber : user.phoneNumber
         }))
 
         return { success: true, cusTomers: cstMer }
@@ -1928,6 +1946,115 @@ export const customers = async () => {
             success: false,
             message: "Something went wrong"
         }
+    }
+}
+
+export const delete_customer = async (data: {
+    _id: string,
+    firstName: string,
+    email: string
+}) => {
+    try {
+        await dbConnect();
+
+        const { success, _id } = await auth();
+
+        if (!success) return { success: false, message: "Login required" }
+
+        if (!data.email.trim() || !data._id || !data.firstName.trim()) return { success: false, message: "Customer deatils not found" }
+
+        const admin = await userModel.findOne({
+            _id,
+            role: 'admin'
+        })
+
+        if (!admin) return { success: false, message: "Admin account not found" }
+
+        const user = await userModel.findOne({
+            _id: data._id,
+            email: data.email
+        })
+
+        if (!user) return { success: false, message: 'Cutsomer account not found' }
+
+
+        await savedProductModel.deleteMany({ userId: data._id })
+        await orderModel.deleteMany({ userId: data._id })
+        await cartModel.deleteOne({ userId: data._id })
+
+
+        const message = {
+            from: `"Austin Kitchen" < ${process.env.NODE_MAIL}> `,
+            to: user.email,
+            subject: "Your Austin Kitchen Account Has Been Deleted",
+            html: `
+            <div style = "font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f5; color: #333;" >
+
+                <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd;" >
+                    <h1 style="margin: 0; font-size: 28px; color: #ED8F0C;" >
+                        Austin Kitchen
+                    </h1>
+                </div>
+                       
+                <p style = "font-size: 18px; margin-top: 25px;" >
+                    Hello ${user.firstName},
+                </p>
+
+                <p style = "font-size: 16px; line-height: 1.6;" >
+                    We are writing to let you know that your <strong>Austin Kitchen </strong> account has been deleted by admin.
+                </p>
+
+                    <div style = "background-color: #ffffff; padding: 22px; border-radius: 10px; margin: 25px 0; border: 1px solid #ddd; text-align: center;" >
+
+                        <p style="font-size: 24px; font-weight: bold; margin: 0; color: #C91737;" >
+                        Account Deleted
+                        </p>
+
+                        <p style = "font-size: 15px; color: #666; margin-top: 10px; line-height: 1.5;" >
+                        Your account and its associated access to Austin Kitchen services have been removed.
+                        </p>
+                    </div>
+
+                        <p style = "font-size: 15px; line-height: 1.6; color: #555;" >
+                            You will no longer be able to sign in or access your Austin Kitchen account using your previous account details.
+                        </p>
+
+                        <p style = "font-size: 15px; line-height: 1.6; color: #555;" >
+                            If you believe this account was deleted by mistake or you have any questions, please contact the Austin Kitchen team.
+                        </p>
+
+                        <div style = "background-color: #ED8F0C; padding: 15px 20px; border-radius: 8px; margin: 25px 0; text-align: center;" >
+                            <p style="font-size: 16px; font-weight: bold; color: #ffffff; margin: 0;" >
+                                Thank you for being part of Austin Kitchen.
+                            </p>
+                        </div>
+
+                        <div style = "border-top: 1px solid #ddd; margin-top: 35px; padding-top: 20px;" >
+                            <p style="font-size: 13px; color: #888; text-align: center; margin: 0;" >
+                                This is an automated account notification.Please do not reply to this message.
+                            </p>
+
+                            <p style = "font-size: 13px; color: #888; text-align: center; margin-top: 10px;" >
+                                © 2026 Austin Kitchen.All rights reserved.
+                            </p>
+                        </div>
+
+            </div>
+        `
+        };
+
+        try {
+            await transporter.sendMail(message)
+        } catch (err) {
+            console.log(err)
+        }
+
+        await user.deleteOne()
+
+        return { success: true, message: `${data.firstName}'s account and histories deleted` }
+    } catch (error) {
+        console.log(error)
+        return { success: false, message: "Something went wrong" }
     }
 }
 
@@ -3778,12 +3905,19 @@ export const contactUs = async (data: {
 
         if (!data.email || !data.firstName.trim() || !data.lastName.trim() || !data.subject.trim() || !data.message.trim()) return { success: false, message: 'All fields are required' }
 
+        const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+        if (!EMAIL_REGEX.test(data.email)) {
+            return { success: false, message: 'Please enter a valid email address' }
+        }
+        
         const admin = await userModel.findOne({
             role: 'admin'
         })
 
         if (!admin) return { success: false, message: 'For some reasons, admin currently can not be reached' }
 
+    
         const message = {
             from: `"${data.firstName} ${data.lastName}" <${data.email}>`,
             to: admin.email,
@@ -3868,5 +4002,110 @@ export const contactUs = async (data: {
     } catch (error) {
         console.log(error)
         return { success: false, message: 'Something went wrong' }
+    }
+}
+
+export const edit_businessInfo = async(data : {
+    businessPhone : string,
+    businessEmail : string,
+    address : string,
+    town : string,
+    state : string,
+    openingFrom : string,
+    openingTo : string
+}) =>{
+    try {
+        await dbConnect()
+        const {success, _id} = await auth()
+
+        if(!success) return {success : false, message : 'Login required'}
+
+        if(!data.businessEmail.trim() || !data.businessPhone.trim() || !data.address.trim() || !data.town.trim() || !data.state.trim() || !data.openingFrom.trim() || !data.openingTo.trim()) return {success : false, message : 'All fields are required'}
+
+        const admin = await userModel.findOne({
+            _id, 
+            role : 'admin'
+        })
+
+        if(!admin) return {success : false, message :"Admin account not found"}
+
+        const businessInfo = await businessInfoModel.findOne()
+
+        if(!businessInfo) {
+            await businessInfoModel.create({
+                businessPhone: data.businessPhone.trim(),
+                businessEmail: data.businessEmail.toLowerCase().trim(),
+                businessAddress: {
+                    address: data.address.toLowerCase().trim(),
+                    town: data.town.toLowerCase().trim(),
+                    state: data.state.toLowerCase().trim()
+                },
+                openingTo : data.openingTo.toLowerCase().trim(),
+                openingFrom : data.openingFrom.toLowerCase().trim()
+            })
+
+            return {success : true, message : "Business information created successfully"}
+        }
+
+        if (businessInfo.businessEmail !== data.businessEmail.toLowerCase().trim()) {
+            businessInfo.businessEmail = data.businessEmail.toLowerCase().trim()
+        }
+
+        if (businessInfo.businessPhone !== data.businessPhone.trim()) {
+            businessInfo.businessPhone = data.businessPhone.trim()
+        }
+
+        if (businessInfo.openingTo !== data.openingTo.toLowerCase().trim()) {
+            businessInfo.openingTo = data.openingTo.toLowerCase().trim()
+        }
+
+        if (businessInfo.openingFrom !== data.openingFrom.toLowerCase().trim()) {
+            businessInfo.openingFrom = data.openingFrom.toLowerCase().trim()
+        }
+
+        if (businessInfo.businessAddress.address !== data.address.toLowerCase().trim()) {
+            businessInfo.businessAddress.address = data.address.toLowerCase().trim()
+        }
+
+        if (businessInfo.businessAddress.town !== data.town.toLowerCase().trim()) {
+            businessInfo.businessAddress.town = data.town.toLowerCase().trim()
+        }
+
+        if (businessInfo.businessAddress.state !== data.state.toLowerCase().trim()) {
+            businessInfo.businessAddress.state = data.state.toLowerCase().trim()
+        }
+
+        await businessInfo.save()
+        revalidatePath('/')
+        return {success : true, message :"Business information successfully edited"}
+    } catch (error) {
+        console.log(error)
+        return { success : false, message : "Something went wrong"}
+    }
+}
+
+export const fetch_businessInfo = async () =>{
+    try {
+        await dbConnect()
+        const businessInfo = await businessInfoModel.findOne()
+
+        if(!businessInfo) return {success : false, message : "Business Informations can not be found"}
+
+        const info = {
+            businessPhone : businessInfo.businessPhone,
+            businessEmail : businessInfo.businessEmail,
+            businessAddress : {
+                address : businessInfo.businessAddress.address,
+                town : businessInfo.businessAddress.town,
+                state : businessInfo.businessAddress.state
+            },
+            openingFrom : businessInfo.openingFrom,
+            openingTo : businessInfo.openingTo
+        }
+
+        return {success : true, message : '', info}
+    } catch (error) {
+        console.log(error)
+        return { success : false, message :"Something went wrong", info : null}
     }
 }

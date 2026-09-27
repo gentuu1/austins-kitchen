@@ -68,6 +68,7 @@ export interface ctmrs {
     amountSpent: number,
     email: string,
     profilePic: string
+    phoneNumber : string
 }
 
 export interface all_Ord {

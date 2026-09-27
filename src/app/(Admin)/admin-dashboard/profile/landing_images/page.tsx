@@ -316,7 +316,7 @@ const Page = () => {
     }
 
     return (
-        <div className="min-h-screen bg-zinc-50 p-5 md:px-8">
+        <div className="min-h-screen p-5 md:px-8">
 
             <section className="flex flex-col gap-10">
 
@@ -325,11 +325,11 @@ const Page = () => {
 
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-800">
+                            <h1 className="text-3xl font-bold text-gray-800 dark:text-[#D2D3DB]">
                                 Main Landing Image
                             </h1>
 
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                                 Image displayed on the main landing section
                             </p>
                         </div>
@@ -342,13 +342,13 @@ const Page = () => {
                         </button>
                     </div>
 
-                    <div className="w-full md:w-80 p-5 space-y-4 shadow-sm bg-white rounded-lg">
+                    <div className="w-full md:w-80 p-5 space-y-4 shadow-sm bg-white dark:bg-[#1A1C22] rounded-lg">
 
                         <div className="w-full h-40 overflow-hidden rounded-xl">
                             {
                                 allImages?.mainLanding.image && (
                                     <Image
-                                        src={allImages?.mainLanding.image}
+                                        src={allImages.mainLanding.image}
                                         alt="Main landing"
                                         height={400}
                                         width={400}
@@ -359,8 +359,10 @@ const Page = () => {
 
                             {
                                 !allImages?.mainLanding.image && (
-                                    <div className='h-full w-full flex justify-center items-center'>
-                                        <h1>add image</h1>
+                                    <div className="h-full w-full flex justify-center items-center">
+                                        <h1 className="text-gray-700 dark:text-gray-300">
+                                            Add image
+                                        </h1>
                                     </div>
                                 )
                             }
@@ -370,10 +372,12 @@ const Page = () => {
                             <button
                                 disabled={isPending}
                                 onClick={deleteMainpic}
-                                className="cursor-pointer text-red-500 border border-red-200 hover:bg-red-50 px-6 py-2 rounded-lg transition flex justify-center items-center"
+                                className="cursor-pointer text-red-500 border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-950/30 px-6 py-2 rounded-lg transition flex justify-center items-center"
                             >
                                 {
-                                    isPending ? (<FaSpinner size={15} className='animate-spin' />) : 'Delete'
+                                    isPending
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Delete"
                                 }
                             </button>
                         </div>
@@ -382,15 +386,16 @@ const Page = () => {
                 </div>
 
 
+                {/* PRODUCT DISPLAY */}
                 <div className="flex flex-col gap-5">
 
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-800">
+                            <h1 className="text-3xl font-bold text-gray-800 dark:text-[#D2D3DB]">
                                 Product Display
                             </h1>
 
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                                 Products displayed on the landing page
                             </p>
                         </div>
@@ -406,8 +411,10 @@ const Page = () => {
 
                     {
                         (allImages?.productDisplay?.length ?? 0) === 0 && (
-                            <div className='flex justify-center items-center py-10'>
-                                <h1 className='text-3xl font-bold  text-gray-800'>No display product available</h1>
+                            <div className="flex justify-center items-center py-10">
+                                <h1 className="text-3xl font-bold text-gray-800 dark:text-[#D2D3DB]">
+                                    No display product available
+                                </h1>
                             </div>
                         )
                     }
@@ -419,7 +426,10 @@ const Page = () => {
 
                                 {
                                     allImages?.productDisplay.map((dis) => (
-                                        <div key={dis._id.toString()} className="p-4 bg-white rounded-lg shadow-sm space-y-3">
+                                        <div
+                                            key={dis._id.toString()}
+                                            className="p-4 bg-white dark:bg-[#1A1C22] rounded-lg shadow-sm space-y-3"
+                                        >
 
                                             <div className="w-full h-40 overflow-hidden rounded-xl">
                                                 <Image
@@ -427,23 +437,25 @@ const Page = () => {
                                                     alt={dis.title}
                                                     height={300}
                                                     width={300}
-                                                    loading='eager'
+                                                    loading="eager"
                                                     unoptimized
                                                     className="h-full w-full object-cover"
                                                 />
                                             </div>
 
-                                            <h2 className="font-semibold text-gray-800 capitalize">
+                                            <h2 className="font-semibold text-gray-800 dark:text-white capitalize">
                                                 {dis.title}
                                             </h2>
 
                                             <button
                                                 disabled={Loading === dis._id.toString()}
                                                 onClick={() => delete_displayproImg(dis._id.toString())}
-                                                className="cursor-pointer text-red-500 border border-red-200 hover:bg-red-50 px-5 py-2 rounded-lg transition"
+                                                className="cursor-pointer text-red-500 border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-950/30 px-5 py-2 rounded-lg transition"
                                             >
                                                 {
-                                                    Loading === dis._id.toString() ? (<FaSpinner size={15} className='animate-spin' />) : "Delete"
+                                                    Loading === dis._id.toString()
+                                                        ? <FaSpinner size={15} className="animate-spin" />
+                                                        : "Delete"
                                                 }
                                             </button>
 
@@ -462,11 +474,11 @@ const Page = () => {
 
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-800">
+                            <h1 className="text-3xl font-bold text-gray-800 dark:text-[#D2D3DB]">
                                 Why People Love Us Image
                             </h1>
 
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                                 Image displayed in the Why People Love Us section
                             </p>
                         </div>
@@ -479,7 +491,7 @@ const Page = () => {
                         </button>
                     </div>
 
-                    <div className="w-full md:w-80 p-5 space-y-4 shadow-sm bg-white rounded-lg">
+                    <div className="w-full md:w-80 p-5 space-y-4 shadow-sm bg-white dark:bg-[#1A1C22] rounded-lg">
 
                         <div className="w-full h-40 overflow-hidden rounded-xl">
                             {
@@ -495,7 +507,9 @@ const Page = () => {
                                     />
                                 ) : (
                                     <div className="h-full w-full flex justify-center items-center">
-                                        <h1>Add image</h1>
+                                        <h1 className="text-gray-700 dark:text-gray-300">
+                                            Add image
+                                        </h1>
                                     </div>
                                 )
                             }
@@ -505,10 +519,12 @@ const Page = () => {
                             <button
                                 disabled={deleteWHyLo}
                                 onClick={() => delete_why()}
-                                className="cursor-pointer flex justify-center items-center text-red-500 border border-red-200 hover:bg-red-50 px-6 py-2 rounded-lg transition"
+                                className="cursor-pointer flex justify-center items-center text-red-500 border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-950/30 px-6 py-2 rounded-lg transition"
                             >
                                 {
-                                    deleteWHyLo ? (<FaSpinner size={15} className='animate-spin' />) : "Delete"
+                                    deleteWHyLo
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Delete"
                                 }
                             </button>
                         </div>
@@ -522,11 +538,11 @@ const Page = () => {
 
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-800">
+                            <h1 className="text-3xl font-bold text-gray-800 dark:text-[#D2D3DB]">
                                 Bottom Landing Image
                             </h1>
 
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                                 Image displayed at the bottom of the landing page
                             </p>
                         </div>
@@ -539,7 +555,7 @@ const Page = () => {
                         </button>
                     </div>
 
-                    <div className="w-full md:w-80 p-5 space-y-4 shadow-sm bg-white rounded-lg">
+                    <div className="w-full md:w-80 p-5 space-y-4 shadow-sm bg-white dark:bg-[#1A1C22] rounded-lg">
 
                         <div className="w-full h-40 overflow-hidden rounded-xl">
                             {
@@ -555,7 +571,9 @@ const Page = () => {
                                     />
                                 ) : (
                                     <div className="h-full w-full flex justify-center items-center">
-                                        <h1>Add image</h1>
+                                        <h1 className="text-gray-700 dark:text-gray-300">
+                                            Add image
+                                        </h1>
                                     </div>
                                 )
                             }
@@ -565,11 +583,13 @@ const Page = () => {
                             <button
                                 disabled={deleteBottomLo}
                                 onClick={() => delete_bottom()}
-                                type='button'
-                                className="text-red-500 border border-red-200 hover:bg-red-50 px-6 py-2 rounded-lg transition"
+                                type="button"
+                                className="text-red-500 border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-950/30 px-6 py-2 rounded-lg transition"
                             >
                                 {
-                                    deleteBottomLo ? (<FaSpinner size={15} className='animate-spin' />) : "Delete"
+                                    deleteBottomLo
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Delete"
                                 }
                             </button>
                         </div>
@@ -579,19 +599,21 @@ const Page = () => {
 
             </section>
 
+
+            {/* MAIN IMAGE MODAL */}
             {OpenMainModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5">
 
-                    <div className="w-full max-w-md bg-white rounded-xl p-6">
+                    <div className="w-full max-w-md bg-white dark:bg-[#1A1C22] rounded-xl p-6">
 
                         <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-xl font-bold">
+                            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                                 Add Main Landing Image
                             </h2>
 
                             <button
                                 onClick={() => setOpenMainModal(false)}
-                                className="text-gray-500 hover:text-gray-800"
+                                className="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
                             >
                                 <MdClose size={25} />
                             </button>
@@ -600,7 +622,7 @@ const Page = () => {
                         <div className="space-y-5">
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">
+                                <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
                                     Image
                                 </label>
 
@@ -608,7 +630,7 @@ const Page = () => {
                                     onChange={handleMainImg}
                                     type="file"
                                     accept="image/*"
-                                    className="w-full border rounded-lg p-3"
+                                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-white/10 dark:text-gray-200 rounded-lg p-3"
                                 />
                             </div>
 
@@ -618,7 +640,9 @@ const Page = () => {
                                 className="flex justify-center items-center w-full bg-[#ED8F0C] text-white py-3 rounded-lg"
                             >
                                 {
-                                    isPending ? (<FaSpinner size={15} className='animate-spin' />) : 'Add Image'
+                                    isPending
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Add Image"
                                 }
                             </button>
 
@@ -628,19 +652,21 @@ const Page = () => {
                 </div>
             )}
 
+
+            {/* PRODUCT MODAL */}
             {openProductModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5">
 
-                    <div className="w-full max-w-md bg-white rounded-xl p-6">
+                    <div className="w-full max-w-md bg-white dark:bg-[#1A1C22] rounded-xl p-6">
 
                         <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-xl font-bold">
+                            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                                 Add Product Display
                             </h2>
 
                             <button
                                 onClick={() => setOpenProductModal(false)}
-                                className="text-gray-500 hover:text-gray-800"
+                                className="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
                             >
                                 <MdClose size={25} />
                             </button>
@@ -649,29 +675,35 @@ const Page = () => {
                         <div className="space-y-5">
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">
+                                <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
                                     Product Title
                                 </label>
 
-                                <div className='flex flex-col gap-1'>
+                                <div className="flex flex-col gap-1">
+
                                     <input
                                         onChange={useformik.handleChange}
                                         value={useformik.values.title}
-                                        name='title'
+                                        name="title"
                                         type="text"
                                         placeholder="Enter product title"
-                                        className="w-full border rounded-lg p-3 outline-none focus:border-[#ED8F0C]"
+                                        className="w-full border border-gray-300 dark:border-gray-600 dark:bg-white/10 dark:text-white rounded-lg p-3 outline-none focus:border-[#ED8F0C]"
                                     />
+
                                     {
                                         useformik.errors.title && (
-                                            <small className='text-red-500 text-sm tracking-tight'>{useformik.errors.title}</small>
+                                            <small className="text-red-500 text-sm tracking-tight">
+                                                {useformik.errors.title}
+                                            </small>
                                         )
                                     }
+
                                 </div>
                             </div>
 
+
                             <div>
-                                <label className="block text-sm font-medium mb-2">
+                                <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
                                     Product Image
                                 </label>
 
@@ -680,15 +712,19 @@ const Page = () => {
                                         onChange={handledisPlaypro}
                                         type="file"
                                         accept="image/*"
-                                        className="w-full border rounded-lg p-3"
+                                        className="w-full border border-gray-300 dark:border-gray-600 dark:bg-white/10 dark:text-gray-200 rounded-lg p-3"
                                     />
+
                                     {
                                         useformik.errors.image && (
-                                            <small className='text-red-500 text-sm tracking-tight'>{useformik.errors.image}</small>
+                                            <small className="text-red-500 text-sm tracking-tight">
+                                                {useformik.errors.image}
+                                            </small>
                                         )
                                     }
                                 </div>
                             </div>
+
 
                             <button
                                 disabled={isPending}
@@ -696,7 +732,9 @@ const Page = () => {
                                 className="w-full bg-[#ED8F0C] hover:bg-[#d39a4a] text-white py-3 rounded-lg flex justify-center items-center transition"
                             >
                                 {
-                                    isPending ? (<FaSpinner size={15} className='animate-spin' />) : 'Add'
+                                    isPending
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Add"
                                 }
                             </button>
 
@@ -707,28 +745,31 @@ const Page = () => {
             )}
 
 
+            {/* WHY PEOPLE LOVE US MODAL */}
             {openWhyModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5">
 
-                    <div className="w-full max-w-md bg-white rounded-xl p-6">
+                    <div className="w-full max-w-md bg-white dark:bg-[#1A1C22] rounded-xl p-6">
 
                         <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-xl font-bold">
+
+                            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                                 Add Why People Love Us Image
                             </h2>
 
                             <button
                                 onClick={() => setOpenWhyModal(false)}
-                                className="text-gray-500 hover:text-gray-800"
+                                className="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
                             >
                                 <MdClose size={25} />
                             </button>
+
                         </div>
 
                         <div className="space-y-5">
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">
+                                <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
                                     Image
                                 </label>
 
@@ -736,16 +777,19 @@ const Page = () => {
                                     onChange={handleWhyPeoleLoveImg}
                                     type="file"
                                     accept="image/*"
-                                    className="w-full border rounded-lg p-3"
+                                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-white/10 dark:text-gray-200 rounded-lg p-3"
                                 />
                             </div>
 
                             <button
                                 onClick={() => addWhyPeople()}
+                                disabled={isPending}
                                 className="cursor-pointer flex justify-center items-center w-full bg-[#ED8F0C] text-white py-3 rounded-lg"
                             >
                                 {
-                                    isPending ? (<FaSpinner size={15} className='animate-spin' />) : 'Add image'
+                                    isPending
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Add image"
                                 }
                             </button>
 
@@ -755,28 +799,32 @@ const Page = () => {
                 </div>
             )}
 
+
+           
             {openBottomModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5">
 
-                    <div className="w-full max-w-md bg-white rounded-xl p-6">
+                    <div className="w-full max-w-md bg-white dark:bg-[#1A1C22] rounded-xl p-6">
 
                         <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-xl font-bold">
+
+                            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                                 Add Bottom Landing Image
                             </h2>
 
                             <button
                                 onClick={() => setOpenBottomModal(false)}
-                                className="text-gray-500 hover:text-gray-800"
+                                className="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
                             >
                                 <MdClose size={25} />
                             </button>
+
                         </div>
 
                         <div className="space-y-5">
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">
+                                <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
                                     Image
                                 </label>
 
@@ -784,18 +832,20 @@ const Page = () => {
                                     onChange={handleBottomLandingImg}
                                     type="file"
                                     accept="image/*"
-                                    className="w-full border rounded-lg p-3"
+                                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-white/10 dark:text-gray-200 rounded-lg p-3"
                                 />
                             </div>
 
                             <button
-                            type='button'
+                                type="button"
                                 disabled={isPending}
-                                onClick={()=>addBottomlanding()}
+                                onClick={() => addBottomlanding()}
                                 className="flex justify-center items-center w-full bg-[#ED8F0C] text-white py-3 rounded-lg"
                             >
                                 {
-                                    isPending ? (<FaSpinner size={15} className='animate-spin' />) : "Add image"
+                                    isPending
+                                        ? <FaSpinner size={15} className="animate-spin" />
+                                        : "Add image"
                                 }
                             </button>
 

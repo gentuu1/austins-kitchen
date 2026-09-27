@@ -86,16 +86,16 @@ const Forgotpass = () => {
         </>
     }
     
-    return (
+    return (    
         <div>
 
 
             <section className=" lg:w-xl md:w-[70%] w-full  px-5 flex flex-col justify-center m-auto mt-5">
-                <h1 className="lg:text-3xl md:text-4xl text-3xl tracking-tight text-center text-[#262262]">Forgot your password?</h1>
-                <p className='text-center lg:text-2xl md:text-[20px] text-lg mt-3'>We'll email you an otp to reset it.</p>
+                <h1 className="lg:text-3xl md:text-4xl text-3xl tracking-tight text-center text-[#262262] dark:text-white">Forgot your password?</h1>
+                <p className='text-center lg:text-2xl md:text-[20px] text-lg mt-3 dark:text-gray-300'>We'll email you an otp to reset it.</p>
                 <input
                     disabled={confirmotp}
-                    className={`${formikemail.errors.email && formikemail.touched.email ? 'border-red-600 ' : 'border-neutral-300 hover:border-[#ED8F0C]'} lg:h-12 md:h-14 h-12 md:text-[17px] text-[17px] lg:text-sm px-2 outline-0 border  rounded-sm mt-5 `}
+                    className={`${formikemail.errors.email && formikemail.touched.email ? 'border-red-600 ' : 'border-neutral-300 hover:border-[#ED8F0C] dark:border-gray-600 dark:hover:border-[#ED8F0C]'} lg:h-12 md:h-14 h-12 md:text-[17px] text-[17px] lg:text-sm px-2 outline-0 border  rounded-sm mt-5 dark:bg-gray-800 dark:text-gray-100`}
                     placeholder="Email address"
                     name="email"
                     type="text"
@@ -109,7 +109,7 @@ const Forgotpass = () => {
 
                 <input
                     disabled={confirmotp}
-                    className={`${formikemail.errors.newPassword && formikemail.touched.newPassword ? 'border-red-600 ' : 'border-neutral-300 hover:border-[#ED8F0C]'} lg:h-12 md:h-14 h-12 md:text-[17px] text-[17px] lg:text-sm px-2 outline-0 border  rounded-sm mt-5 `}
+                    className={`${formikemail.errors.newPassword && formikemail.touched.newPassword ? 'border-red-600 ' : 'border-neutral-300 hover:border-[#ED8F0C] dark:border-gray-600 dark:hover:border-[#ED8F0C]'} lg:h-12 md:h-14 h-12 md:text-[17px] text-[17px] lg:text-sm px-2 outline-0 border  rounded-sm mt-5 dark:bg-gray-800 dark:text-gray-100`}
                     placeholder="New password"
                     name="newPassword"
                     type="password"
@@ -122,7 +122,7 @@ const Forgotpass = () => {
                 }
 
                 <input
-                    className={`${formikotp.errors.otp && formikotp.touched.otp ? 'border-red-600 ' : 'border-neutral-300 hover:border-[#3921D7]'} ${confirmotp ? 'block' : "hidden"} lg:h-12 md:h-14 h-12 md:text-[17px] text-[17px] lg:text-sm px-2 outline-0 border  rounded-sm mt-5 `}
+                    className={`${formikotp.errors.otp && formikotp.touched.otp ? 'border-red-600 ' : 'border-neutral-300 hover:border-[#3921D7] dark:border-gray-600 dark:hover:border-[#ED8F0C]'} ${confirmotp ? 'block' : "hidden"} lg:h-12 md:h-14 h-12 md:text-[17px] text-[17px] lg:text-sm px-2 outline-0 border  rounded-sm mt-5 dark:bg-gray-800 dark:text-gray-100`}
                     placeholder="Otp"
                     name="otp"
                     type="text"
@@ -136,7 +136,7 @@ const Forgotpass = () => {
 
                 <div className="flex justify-end-safe h-fit items-center pl-auto gap-2 mt-3">
                     <Link href='/signin'>
-                        <button className="lg:text-[17px] md:text-[20px] text-[20px] lg:py-3 lg:px-7 md:py-4 md:px-8  py-3 px-6.5  text-[#ED8F0C] font-semibold bg-transparent hover:bg-[#F4F4F5] rounded-3xl cursor-pointer transition-all duration-300">Cancel</button>
+                        <button className="lg:text-[17px] md:text-[20px] text-[20px] lg:py-3 lg:px-7 md:py-4 md:px-8  py-3 px-6.5  text-[#ED8F0C] font-semibold bg-transparent hover:bg-[#F4F4F5] dark:hover:bg-gray-800 rounded-3xl cursor-pointer transition-all duration-300">Cancel</button>
                     </Link>
 
                     {/* confirm email button */}

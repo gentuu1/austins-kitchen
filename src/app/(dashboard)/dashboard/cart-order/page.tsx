@@ -97,15 +97,15 @@ const Cart = () => {
                 cart.length === 0 && (
                     <div className="flex flex-col items-center justify-center min-h-[65vh] text-center px-5">
 
-                        <div className="w-28 h-28 rounded-full bg-orange-100 flex items-center justify-center mb-6">
+                        <div className="w-28 h-28 rounded-full bg-orange-100 dark:bg-orange-950/40 flex items-center justify-center mb-6">
                             <FaShoppingCart className="text-5xl text-[#ED8F0C]" />
                         </div>
 
-                        <h2 className={`${anton.className} text-3xl tracking-wide text-gray-800`}>
+                        <h2 className={`${anton.className} text-3xl tracking-wide text-gray-800 dark:text-white`}>
                             Your Cart is Empty
                         </h2>
 
-                        <p className="mt-2 text-gray-500 max-w-md leading-7">
+                        <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-md leading-7">
                             There are no items in your cart yet. Browse our menu and add something delicious to get started.
                         </p>
 
@@ -123,9 +123,9 @@ const Cart = () => {
             {
                 cart.length !== 0 && (
                     <div className=' w-full py-5'>
-                        <table className='m-auto w-[90%] bg-white shadow-md rounded-xl overflow-hidden'>
-                            <thead className='p-5 bg-gray-50 md:table-header-group hidden'>
-                                <tr className='text-left text-gray-600 text-sm uppercase tracking-wide'>
+                        <table className='m-auto w-[90%] bg-white dark:bg-[#1A1C22] shadow-md rounded-xl overflow-hidden'>
+                            <thead className='p-5 bg-gray-50 dark:bg-gray-800 md:table-header-group hidden'>
+                                <tr className='text-left text-gray-600 dark:text-gray-300 text-sm uppercase tracking-wide'>
                                     <th className='p-4 '>
                                         product
                                     </th>
@@ -144,7 +144,7 @@ const Cart = () => {
                             <tbody>
                                 {
                                     cart.length !== 0 && cart.map((each: product) => (
-                                        <tr key={each._id} className='flex flex-col md:table-row md:p-0 p-4 gap-3 md:gap-0 border-b border-gray-300'>
+                                        <tr key={each._id} className='flex flex-col md:table-row md:p-0 p-4 gap-3 md:gap-0 border-b border-gray-300 dark:border-gray-700'>
                                             <td className='flex gap-3 items-center justify-between md:justify-start md:p-4 '>
                                                 <div className='w-16 h-16 rounded-lg overflow-hidden'>
                                                     <img
@@ -154,13 +154,13 @@ const Cart = () => {
                                                     />
                                                 </div>
 
-                                                <p className={`${anton.className} tracking-wide font-medium text-lg text-gray-800`}>
+                                                <p className={`${anton.className} tracking-wide font-medium text-lg text-gray-800 dark:text-white`}>
                                                     {each.title}
                                                 </p>
                                             </td>
 
                                             <td className='flex justify-between md:table-cell md:p-4 py-4'>
-                                                <h2 className='md:hidden text-gray-500'>Price</h2>
+                                                <h2 className='md:hidden text-gray-500 dark:text-gray-400'>Price</h2>
 
                                                 <p className={`${anton.className} text-lg md:text-xl text-[#ED8F0C] tracking-wide`}>
                                                     ₦{(each.price).toLocaleString()}
@@ -168,23 +168,23 @@ const Cart = () => {
                                             </td>
 
                                             <td className='flex justify-between md:table-cell md:p-4 py-4'>
-                                                <h2 className='md:hidden text-gray-500'>Qty</h2>
+                                                <h2 className='md:hidden text-gray-500 dark:text-gray-400'>Qty</h2>
 
                                                 <div className='flex items-center gap-2'>
-                                                    <button disabled={deCLoading === each._id.toString()} onClick={() => decRease(each._id)} className='cursor-pointer w-8 h-8 border rounded-md hover:bg-gray-100 flex justify-center items-center'>{
+                                                    <button disabled={deCLoading === each._id.toString()} onClick={() => decRease(each._id)} className='cursor-pointer w-8 h-8 border dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex justify-center items-center dark:text-gray-200'>{
                                                         deCLoading === each._id ? (<FaSpinner className="text-sm animate-spin" />) : "-"
                                                     }</button>
-                                                    <span>{each.quantity}</span>
-                                                    <button disabled={inCLoading === each._id.toString()} onClick={() => incRease(each._id.toString())} className='w-8 h-8 border rounded-md hover:bg-gray-100 flex justify-center items-center'>{
+                                                    <span className='dark:text-gray-200'>{each.quantity}</span>
+                                                    <button disabled={inCLoading === each._id.toString()} onClick={() => incRease(each._id.toString())} className='w-8 h-8 border dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex justify-center items-center dark:text-gray-200'>{
                                                         inCLoading === each._id ? (<FaSpinner className="text-sm animate-spin" />) : "+"
                                                     }</button>
                                                 </div>
                                             </td>
 
                                             <td className='flex justify-between md:table-cell md:text-center md:p-4 py-4'>
-                                                <h2 className='md:hidden text-gray-500'>Remove</h2>
+                                                <h2 className='md:hidden text-gray-500 dark:text-gray-400'>Remove</h2>
 
-                                                <button onClick={() => removeCart(each._id.toString())} className='hover:text-red-500 cursor-pointer focus:text-red-500 text-gray-500 text-lg font-bold'>×</button>
+                                                <button onClick={() => removeCart(each._id.toString())} className='hover:text-red-500 cursor-pointer focus:text-red-500 text-gray-500 dark:text-gray-400 text-lg font-bold'>×</button>
                                             </td>
                                         </tr>
                                     ))
@@ -192,14 +192,14 @@ const Cart = () => {
                             </tbody>
                         </table>
 
-                        <section className=' mt-20 lg:w-[50%] md:w-[80%] w-full h-fit py-5 ml-auto bg-gray-100 mr-5 flex-col flex gap-10'>
-                            <h1 className='lg:text-xl md:text-2xl font-bold text-center tracking-tight'>
+                        <section className=' mt-20 lg:w-[50%] md:w-[80%] w-full h-fit py-5 ml-auto bg-gray-100 dark:bg-[#1A1C22] mr-5 flex-col flex gap-10'>
+                            <h1 className='lg:text-xl md:text-2xl font-bold text-center tracking-tight dark:text-white'>
                                 CART TOTALS
                             </h1>
 
-                            <div className='p-5 md:w-[90%] w-full m-auto h-fit bg-white rounded-lg shadow-2xs '>
-                                <div className='w-full border-b border-gray-300 py-3 flex justify-between items-center'>
-                                    <h3 className='lg:text-lg md:text-xl font-semibold'>
+                            <div className='p-5 md:w-[90%] w-full m-auto h-fit bg-white dark:bg-gray-800 rounded-lg shadow-2xs '>
+                                <div className='w-full border-b border-gray-300 dark:border-gray-700 py-3 flex justify-between items-center'>
+                                    <h3 className='lg:text-lg md:text-xl font-semibold dark:text-white'>
                                         Subtotal
                                     </h3>
 
@@ -210,8 +210,8 @@ const Cart = () => {
                                     </p>
                                 </div>
 
-                                <div className='w-full mt-5 border-gray-300 py-3 flex justify-between items-center'>
-                                    <h3 className='lg:text-lg md:text-xl font-light'>
+                                <div className='w-full mt-5 border-gray-300 dark:border-gray-700 py-3 flex justify-between items-center'>
+                                    <h3 className='lg:text-lg md:text-xl font-light dark:text-gray-300'>
                                         Delivery fee
                                     </h3>
 
@@ -222,8 +222,8 @@ const Cart = () => {
                                     </p>
                                 </div>
 
-                                <div className='w-full border-t mt-5 border-gray-300 py-3 flex justify-between items-center'>
-                                    <h3 className='lg:text-2xl font-bold'>
+                                <div className='w-full border-t mt-5 border-gray-300 dark:border-gray-700 py-3 flex justify-between items-center'>
+                                    <h3 className='lg:text-2xl font-bold dark:text-white'>
                                         TOTAL
                                     </h3>
 

@@ -96,7 +96,7 @@ const NavBar = () => {
                         </div>
                     </nav>
 
-                    <div className="w-full  flex flex-col space-y-3 p-5 mt-5">
+                    <div className="w-full  flex flex-col space-y-6 p-5 mt-5">
                         <Link href='/about-us'>
                             <p className="text-lg font-medium dark:text-gray-200">ABOUT-US</p>
                         </Link>
@@ -113,7 +113,7 @@ const NavBar = () => {
 
                     <div className='w-full flex flex-col items-center mt-20'>
                         <Link href='/signin ' >
-                            <button className='py-3 px-20  rounded-xl border bg-transparent border-[#ED8F0C] text-lg font-bold'>
+                            <button className='py-3 px-20  rounded-xl border bg-transparent dark:border-[#ED8F0C] border-gray-200 text-lg font-bold'>
                                 SiGNIN
                             </button>
                         </Link>

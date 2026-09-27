@@ -48,10 +48,9 @@ const Products = () => {
         },
 
         onSubmit: (values) => {
-            setisSearch(true)
-
-            search(values.search.trim())
-            setisSearch(false)
+            startTransition(()=>{
+                search(values.search.trim())
+            })
         }
     })
 
@@ -157,6 +156,7 @@ const Products = () => {
                     autoClose: 2000
                 })
 
+                formik.resetForm()
                 await fetchProd()
                 setprev('')
                 setopenAddproduct(false)
@@ -283,17 +283,15 @@ const Products = () => {
 
             <div className={`${openDeleteproduct ? 'fixed inset-0' : 'hidden'} overflow-y-scroll border h-screen w-full flex items-center bg-black/60 z-50 `}>
 
-                <div className='z-50 lg:w-[50%] md:w-[80%] w-[98%] h-fit p-2 bg-white rounded-lg m-auto'>
+                <div className='z-50 lg:w-[50%] md:w-[80%] w-[98%] h-fit p-2 bg-white dark:bg-[#1A1C22] rounded-lg m-auto'>
                     <div className='flex flex-col items-center leading-tight'>
                         <h1 className='text-xl font-bold text-center text-[#E7000B]'>Delete Product</h1>
 
-                        <p className="text-sm md:text-base text-gray-700 mb-6 text-center">
+                        <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-6 text-center">
                             Are you sure you want to delete {deletepro?.title}? <br />
                             <span className="font-semibold text-red-600">This action cannot be undone.</span>
                         </p>
                     </div>
-
-
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
 
@@ -302,11 +300,10 @@ const Products = () => {
                                 setdeletepro({ _id: '', title: '' })
                                 setopenDeleteproduct(false)
                             }}
-                            className="flex-1 bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-2xl hover:bg-gray-300 transition"
+                            className="flex-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-semibold py-2 px-4 rounded-2xl hover:bg-gray-300 dark:hover:bg-gray-700 transition"
                         >
                             Cancel
                         </button>
-
 
                         <button
                             onClick={deLete}
@@ -322,13 +319,13 @@ const Products = () => {
 
             <div className={`${openEditproduct ? 'fixed inset-0' : 'hidden'} overflow-y-scroll border h-screen w-full flex items-center bg-black/60 z-50 `}>
 
-                <div className='z-50 lg:w-[50%] md:w-[80%] w-[98%] h-fit p-2 bg-white rounded-lg m-auto'>
+                <div className='z-50 lg:w-[50%] md:w-[80%] w-[98%] h-fit p-2 bg-white dark:bg-[#1A1C22] rounded-lg m-auto'>
                     <div className='flex justify-between'>
-                        <h1 className='text-xl font-bold'>Edit {openproduct?.title}</h1>
+                        <h1 className='text-xl font-bold text-gray-900 dark:text-white'>Edit {openproduct?.title}</h1>
 
                         <button
                             onClick={() => setopenEditproduct(false)}
-                            className=" text-2xl hover:text-red-500 cursor-pointer"
+                            className="text-2xl text-gray-700 dark:text-gray-300 hover:text-red-500 cursor-pointer"
                         >
                             <MdClose />
                         </button>
@@ -336,7 +333,7 @@ const Products = () => {
 
                     <div className='flex gap-2 md:gap-5 mt-5'>
                         <div className='flex flex-col md:w-[50%] w-[49%]'>
-                            <p className='lg:text-sm text-lg font-semibold'>Title</p>
+                            <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Title</p>
 
                             <div className='flex flex-col leading-tight'>
                                 <input
@@ -346,7 +343,7 @@ const Products = () => {
                                     name='title'
                                     type="text"
                                     placeholder='e.g. shawarma'
-                                    className='border outline-none rounded-sm p-3 text-sm  h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
+                                    className='border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 outline-none rounded-sm p-3 text-sm h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
                                 />
 
                                 {
@@ -358,7 +355,7 @@ const Products = () => {
                         </div>
 
                         <div className='flex flex-col md:w-[50%] w-[49%]'>
-                            <p className='lg:text-sm text-lg font-semibold'>Price</p>
+                            <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Price</p>
 
                             <div className='flex flex-col leading-tight'>
                                 <input
@@ -368,7 +365,7 @@ const Products = () => {
                                     name='price'
                                     type="number"
                                     placeholder='e.g. 1000'
-                                    className='border  outline-none rounded-sm p-3 text-sm  h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
+                                    className='border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 outline-none rounded-sm p-3 text-sm h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
                                 />
                                 {
                                     editFormik.errors.price && editFormik.touched.price && (
@@ -380,7 +377,7 @@ const Products = () => {
                     </div>
 
                     <div className='flex flex-col mt-2'>
-                        <p className='lg:text-sm text-lg font-semibold'>Description</p>
+                        <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Description</p>
 
                         <div className='flex flex-col leading-tight'>
                             <textarea
@@ -390,7 +387,7 @@ const Products = () => {
                                 name="description"
                                 rows={4}
                                 placeholder='Description'
-                                className='p-2 outline-none border focus:border-[#ED8F0C] focus:outline-none rounded-sm  '
+                                className='p-2 outline-none border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-[#ED8F0C] focus:outline-none rounded-sm'
                             ></textarea>
                             {
                                 editFormik.errors.description && editFormik.touched.description && (
@@ -400,8 +397,8 @@ const Products = () => {
                         </div>
                     </div>
 
-                    <div className=' mt-3'>
-                        <div className='flex gap-5 '>
+                    <div className='mt-3'>
+                        <div className='flex gap-5'>
                             <input
                                 onChange={handleEditImg}
                                 type="file"
@@ -412,7 +409,7 @@ const Products = () => {
                             <div className='flex flex-col leading-tight'>
                                 <label
                                     htmlFor="editimage"
-                                    className="overflow-hidden lg:size-30 size-40 lg:border border-2  border-dashed border-gray-300 rounded-sm flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-[#ED8F0C] transition-all duration-300"
+                                    className="overflow-hidden lg:size-30 size-40 lg:border border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-sm flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-[#ED8F0C] transition-all duration-300"
                                 >
                                     {
                                         prev && (
@@ -433,10 +430,9 @@ const Products = () => {
                                                 </div>
 
                                                 <div className="text-center">
-                                                    <p className="text-sm font-semibold text-gray-700">
+                                                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                                                         Upload Image
                                                     </p>
-
                                                 </div>
                                             </>
                                         )
@@ -447,14 +443,13 @@ const Products = () => {
                                         <small className='text-red-500 text-sm'>{editFormik.errors.image}</small>
                                     )
                                 }
-
                             </div>
 
                             <div className='flex flex-col'>
-                                <p className='lg:text-sm text-lg font-semibold'>Status</p>
+                                <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Status</p>
 
                                 <div className='flex flex-col leading-tight'>
-                                    <label className=' flex gap-2 p-2 cursor-pointer '>
+                                    <label className='flex gap-2 p-2 cursor-pointer'>
                                         <input
                                             onChange={editFormik.handleChange}
                                             onBlur={editFormik.handleBlur}
@@ -463,10 +458,10 @@ const Products = () => {
                                             value='active'
                                         />
 
-                                        <p className='lg:text-sm text-lg'>Active</p>
+                                        <p className='lg:text-sm text-lg text-gray-800 dark:text-gray-200'>Active</p>
                                     </label>
 
-                                    <label className='flex gap-2 p-2 cursor-pointer '>
+                                    <label className='flex gap-2 p-2 cursor-pointer'>
                                         <input
                                             onChange={editFormik.handleChange}
                                             onBlur={editFormik.handleBlur}
@@ -486,18 +481,14 @@ const Products = () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className='flex flex-col mt-5 lg:w-[70%] m-auto'>
-                        <button type='button' onClick={() => editFormik.handleSubmit()} className='flex justify-center bg-[#0565FD] hover:bg-[#5492f5] text-white text-[16px] py-2  rounded-xl cursor-pointer transition duration-300'>
+                        <button type='button' onClick={() => editFormik.handleSubmit()} className='flex justify-center bg-[#0565FD] hover:bg-[#5492f5] text-white text-[16px] py-2 rounded-xl cursor-pointer transition duration-300'>
                             {
-
                                 isPending ? (
                                     <FaSpinner className="text-lg animate-spin" />
                                 ) : ' Edit'
-
                             }
                         </button>
                     </div>
@@ -506,13 +497,13 @@ const Products = () => {
 
             <div className={`${openAddproduct ? 'fixed inset-0' : 'hidden'} overflow-y-scroll border h-screen w-full flex items-center bg-black/60 z-50 `}>
 
-                <div className='z-50 lg:w-[50%] md:w-[80%] w-[98%] h-fit p-2 bg-white rounded-lg m-auto'>
+                <div className='z-50 lg:w-[50%] md:w-[80%] w-[98%] h-fit p-2 bg-white dark:bg-[#1A1C22] rounded-lg m-auto'>
                     <div className='flex justify-between'>
-                        <h1 className='text-xl font-bold'>Product information</h1>
+                        <h1 className='text-xl font-bold text-gray-900 dark:text-white'>Product information</h1>
 
                         <button
                             onClick={() => setopenAddproduct(false)}
-                            className=" text-2xl hover:text-red-500 cursor-pointer"
+                            className="text-2xl text-gray-700 dark:text-gray-300 hover:text-red-500 cursor-pointer"
                         >
                             <MdClose />
                         </button>
@@ -520,7 +511,7 @@ const Products = () => {
 
                     <div className='flex gap-2 md:gap-5 mt-5'>
                         <div className='flex flex-col md:w-[50%] w-[49%]'>
-                            <p className='lg:text-sm text-lg font-semibold'>Title</p>
+                            <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Title</p>
 
                             <div className='flex flex-col leading-tight'>
                                 <input
@@ -530,7 +521,7 @@ const Products = () => {
                                     name='title'
                                     type="text"
                                     placeholder='e.g. shawarma'
-                                    className='border outline-none rounded-sm p-3 text-sm  h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
+                                    className='border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 outline-none rounded-sm p-3 text-sm h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
                                 />
 
                                 {
@@ -542,7 +533,7 @@ const Products = () => {
                         </div>
 
                         <div className='flex flex-col md:w-[50%] w-[49%]'>
-                            <p className='lg:text-sm text-lg font-semibold'>Price</p>
+                            <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Price</p>
 
                             <div className='flex flex-col leading-tight'>
                                 <input
@@ -552,8 +543,9 @@ const Products = () => {
                                     name='price'
                                     type="number"
                                     placeholder='e.g. 1000'
-                                    className='border  outline-none rounded-sm p-3 text-sm  h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
+                                    className='border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 outline-none rounded-sm p-3 text-sm h-10 hover:border focus:border-[#ED8F0C] focus:outline-none'
                                 />
+
                                 {
                                     formik.errors.price && formik.touched.price && (
                                         <small className='text-red-500 text-sm'>{formik.errors.price}</small>
@@ -564,7 +556,7 @@ const Products = () => {
                     </div>
 
                     <div className='flex flex-col mt-2'>
-                        <p className='lg:text-sm text-lg font-semibold'>Description</p>
+                        <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Description</p>
 
                         <div className='flex flex-col leading-tight'>
                             <textarea
@@ -574,8 +566,9 @@ const Products = () => {
                                 name="description"
                                 rows={4}
                                 placeholder='Description'
-                                className='p-2 outline-none border focus:border-[#ED8F0C] focus:outline-none rounded-sm  '
+                                className='p-2 outline-none border dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-[#ED8F0C] focus:outline-none rounded-sm'
                             ></textarea>
+
                             {
                                 formik.errors.description && formik.touched.description && (
                                     <small className='text-red-500 text-sm'>{formik.errors.description}</small>
@@ -584,8 +577,8 @@ const Products = () => {
                         </div>
                     </div>
 
-                    <div className=' mt-3'>
-                        <div className='flex gap-5 '>
+                    <div className='mt-3'>
+                        <div className='flex gap-5'>
                             <input
                                 onChange={handleProductImg}
                                 type="file"
@@ -595,9 +588,8 @@ const Products = () => {
 
                             <div className='flex flex-col leading-tight'>
                                 <label
-
                                     htmlFor="image"
-                                    className="overflow-hidden lg:size-30 size-40 lg:border border-2  border-dashed border-gray-300 rounded-sm flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-[#ED8F0C] transition-all duration-300"
+                                    className="overflow-hidden lg:size-30 size-40 lg:border border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-sm flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-[#ED8F0C] transition-all duration-300"
                                 >
                                     {
                                         prev && (
@@ -610,6 +602,7 @@ const Products = () => {
                                             />
                                         )
                                     }
+
                                     {
                                         !prev && (
                                             <>
@@ -618,28 +611,27 @@ const Products = () => {
                                                 </div>
 
                                                 <div className="text-center">
-                                                    <p className="text-sm font-semibold text-gray-700">
+                                                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                                                         Upload Image
                                                     </p>
-
                                                 </div>
                                             </>
                                         )
                                     }
                                 </label>
+
                                 {
                                     formik.errors.image && formik.touched.image && (
                                         <small className='text-red-500 text-sm'>{formik.errors.image}</small>
                                     )
                                 }
-
                             </div>
 
                             <div className='flex flex-col'>
-                                <p className='lg:text-sm text-lg font-semibold'>Status</p>
+                                <p className='lg:text-sm text-lg font-semibold text-gray-800 dark:text-gray-200'>Status</p>
 
                                 <div className='flex flex-col leading-tight'>
-                                    <label className=' flex gap-2 p-2 cursor-pointer '>
+                                    <label className='flex gap-2 p-2 cursor-pointer'>
                                         <input
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
@@ -648,10 +640,10 @@ const Products = () => {
                                             value='active'
                                         />
 
-                                        <p className='lg:text-sm text-lg'>Active</p>
+                                        <p className='lg:text-sm text-lg text-gray-800 dark:text-gray-200'>Active</p>
                                     </label>
 
-                                    <label className='flex gap-2 p-2 cursor-pointer '>
+                                    <label className='flex gap-2 p-2 cursor-pointer'>
                                         <input
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
@@ -671,18 +663,14 @@ const Products = () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className='flex flex-col mt-5 lg:w-[70%] m-auto'>
-                        <button type='button' onClick={() => formik.handleSubmit()} className='flex justify-center bg-[#0565FD] hover:bg-[#5492f5] text-white text-[16px] py-2  rounded-xl cursor-pointer transition duration-300'>
+                        <button type='button' onClick={() => formik.handleSubmit()} className='flex justify-center bg-[#0565FD] hover:bg-[#5492f5] text-white text-[16px] py-2 rounded-xl cursor-pointer transition duration-300'>
                             {
-
                                 isPending ? (
                                     <FaSpinner className="text-lg animate-spin" />
                                 ) : ' Add'
-
                             }
                         </button>
                     </div>
@@ -690,31 +678,31 @@ const Products = () => {
             </div>
 
             <div className='md:hidden w-full px-5 py-4 mb-7 content-center'>
-                <h1 className='text-3xl font-bold'>Products</h1>
+                <h1 className='text-3xl font-bold text-gray-900 dark:text-[#D2D3DB]'>Products</h1>
             </div>
 
             <section className='w-full md:p-10 p-3'>
-                <nav className=' w-full grid lg:grid-cols-5 md:grid-cols-3 md:p-3 md:gap-5 gap-3 grid-cols-2 h-fit bg-[#FFFFFF]/30 rounded-lg shadow-md'>
+                <nav className='w-full grid lg:grid-cols-5 md:grid-cols-3 p-3 md:gap-5 gap-3 grid-cols-2 h-fit bg-[#FFFFFF]/30 dark:bg-[#1A1C22]/70 rounded-lg shadow-md'>
 
                     <div className='min-h-20 md:min-h-14 flex items-center gap-2'>
-                        <div className='size-8 rounded-lg shrink-0 flex flex-col justify-center items-center  bg-[#23CA47]'>
+                        <div className='size-8 rounded-lg shrink-0 flex flex-col justify-center items-center bg-[#23CA47]'>
                             <FaAward className='text-white text-lg' />
                         </div>
 
-                        <div className=' leading-tight'>
-                            <small className='text-[13px] md:text-[10px] text-[#747378]'> Most Sold</small>
-                            <p className=' text-[14px] mt-0 line-clamp-2 font-medium'>{highestSold?.title}</p>
+                        <div className='leading-tight'>
+                            <small className='text-[13px] md:text-[10px] text-[#747378] dark:text-gray-400'>Most Sold</small>
+                            <p className='text-[14px] mt-0 line-clamp-2 font-medium text-gray-800 dark:text-gray-200'>{highestSold?.title}</p>
                         </div>
                     </div>
 
                     <div className='min-h-20 md:min-h-14 flex items-center gap-2'>
-                        <div className='size-8 rounded-lg bg-[#4408E8] shrink-0  flex flex-col justify-center items-center '>
+                        <div className='size-8 rounded-lg bg-[#4408E8] shrink-0 flex flex-col justify-center items-center'>
                             <HiOutlineCurrencyDollar className='text-white text-lg' />
                         </div>
 
-                        <div className=' leading-tight'>
-                            <small className='text-[13px] md:text-[10px] text-[#747378]'> Highest Revenue</small>
-                            <p className=' text-[14px] mt-0 line-clamp-2 font-medium'>{highestRev?.title}</p>
+                        <div className='leading-tight'>
+                            <small className='text-[13px] md:text-[10px] text-[#747378] dark:text-gray-400'>Highest Revenue</small>
+                            <p className='text-[14px] mt-0 line-clamp-2 font-medium text-gray-800 dark:text-gray-200'>{highestRev?.title}</p>
                         </div>
                     </div>
 
@@ -723,68 +711,66 @@ const Products = () => {
                             <FaArrowDown className='text-white text-lg' />
                         </div>
 
-                        <div className=' leading-tight'>
-                            <small className='text-[13px] md:text-[10px] text-[#747378]'> Least Sold</small>
-                            <p className=' text-[14px] mt-0 line-clamp-2 font-medium'>{leastSold?.title}</p>
+                        <div className='leading-tight'>
+                            <small className='text-[13px] md:text-[10px] text-[#747378] dark:text-gray-400'>Least Sold</small>
+                            <p className='text-[14px] mt-0 line-clamp-2 font-medium text-gray-800 dark:text-gray-200'>{leastSold?.title}</p>
                         </div>
                     </div>
 
-                    <div className='min-h-20 md:min-h-14 flex  items-center gap-2'>
-                        <div className='size-8 rounded-lg shrink-0 flex flex-col justify-center items-center  bg-[#23CA47]'>
+                    <div className='min-h-20 md:min-h-14 flex items-center gap-2'>
+                        <div className='size-8 rounded-lg shrink-0 flex flex-col justify-center items-center bg-[#23CA47]'>
                             <BsPatchCheckFill className='text-white text-lg' />
                         </div>
 
                         <div className='leading-tight'>
-                            <small className='text-[13px] md:text-[10px] text-[#747378]'> Active</small>
-                            <p className=' text-[14px] mt-0 line-clamp-2 font-medium'>{activeProducts.length}</p>
+                            <small className='text-[13px] md:text-[10px] text-[#747378] dark:text-gray-400'>Active</small>
+                            <p className='text-[14px] mt-0 line-clamp-2 font-medium text-gray-800 dark:text-gray-200'>{activeProducts.length}</p>
                         </div>
                     </div>
 
-                    <div className='min-h-20 md:min-h-14 flex  items-center gap-2'>
-                        <div className='size-8 rounded-lg bg-[#FF7B30] shrink-0 flex flex-col justify-center items-center '>
+                    <div className='min-h-20 md:min-h-14 flex items-center gap-2'>
+                        <div className='size-8 rounded-lg bg-[#FF7B30] shrink-0 flex flex-col justify-center items-center'>
                             <HiShoppingCart className='text-white text-lg' />
                         </div>
 
-                        <div className=' leading-tight'>
-                            <small className='text-[13px] md:text-[10px] text-[#747378]'>Inactive</small>
-                            <p className=' text-[14px] mt-0 line-clamp-2 font-medium'>{inactiveProducts.length}</p>
+                        <div className='leading-tight'>
+                            <small className='text-[13px] md:text-[10px] text-[#747378] dark:text-gray-400'>Inactive</small>
+                            <p className='text-[14px] mt-0 line-clamp-2 font-medium text-gray-800 dark:text-gray-200'>{inactiveProducts.length}</p>
                         </div>
                     </div>
 
                 </nav>
 
-
-                <section className='px-2 w-full h-fit m-auto rounded-lg bg-white mt-10'>
+                <section className='px-2 w-full h-fit m-auto rounded-lg bg-white dark:bg-[#1A1C22] mt-10'>
                     <div className='w-full flex md:flex-row md:justify-between flex-col gap-2 p-2'>
-                        <div className="md:w-70 overflow-hidden md:h-8 h-10 rounded-2xl flex  items-center border border-gray-400">
+                        <div className="md:w-70 overflow-hidden md:h-8 h-10 rounded-2xl flex items-center border border-gray-400 dark:border-gray-600">
                             <input
                                 onChange={searchFormik.handleChange}
                                 value={searchFormik.values.search}
                                 name='search'
-                                className='flex-1 outline-0 md:h-8 h-10 text-sm text-gray-500 px-2'
+                                className='flex-1 outline-0 md:h-8 h-10 text-sm text-gray-500 dark:text-gray-200 px-2 bg-white dark:bg-gray-800'
                                 placeholder='Search'
-                                type="text" />
+                                type="text"
+                            />
 
                             <button type='button' onClick={() => searchFormik.handleSubmit()} className='size-10 md:size-8 transition-all duration-300 rounded-full hover:bg-[#ED8F0C]/30 bg-[#ED8F0C]/20 text-[#ED8F0C] flex flex-col items-center justify-center cursor-pointer'>
                                 {
-                                    isSearch ? (<FaSpinner size={15} className='animate-spin' />) : (<FaSearch size={15} />)
+                                    isPending ? (<FaSpinner size={15} className='animate-spin' />) : (<FaSearch size={15} />)
                                 }
                             </button>
                         </div>
 
-                        {/* <Link href='/admin-dashboard/addproduct'> */}
-                        <button onClick={() => setopenAddproduct(true)} className='bg-[#0565FD] hover:bg-[#5492f5] text-white text-[16px] py-2 md:px-4 rounded-2xl cursor-pointer transition duration-300'>
+                        <button onClick={() => setopenAddproduct(true)} className='bg-[#0565FD] hover:bg-[#5492f5] shadow-lg shadow-blue-300 dark:shadow-blue-950 text-white text-[16px] py-2 md:px-4 rounded-2xl cursor-pointer transition duration-300'>
                             Add product
                         </button>
-                        {/* </Link> */}
                     </div>
 
                     {
                         allfiltered.length === 0 && (
                             <div className="w-full py-10 px-5 flex flex-col items-center justify-center text-center gap-3">
-                                <FaSearch className="text-4xl text-gray-300" />
+                                <FaSearch className="text-4xl text-gray-300 dark:text-gray-600" />
 
-                                <h2 className={`${anton.className} text-2xl text-gray-700`}>
+                                <h2 className={`${anton.className} text-2xl text-gray-700 dark:text-[#D2D3DB]`}>
                                     No Products Found
                                 </h2>
                             </div>
@@ -793,9 +779,9 @@ const Products = () => {
 
                     {
                         allfiltered.length !== 0 && (
-                            <table className='border-collapse mt-10 w-full bg-zinc-50 shadow-md rounded-xl overflow-hidden'>
-                                <thead className='h-8 bg-gray-50 md:table-header-group hidden' >
-                                    <tr className=' text-left text-gray-600 text-sm tracking-wide'>
+                            <table className='border-collapse mt-10 w-full bg-zinc-50 dark:bg-[#1A1C22] shadow-md rounded-xl overflow-hidden'>
+                                <thead className='h-8 bg-gray-50 dark:bg-gray-800 md:table-header-group hidden'>
+                                    <tr className='text-left text-gray-600 dark:text-gray-300 text-sm tracking-wide'>
                                         <th className='pl-2'>
                                             Product
                                         </th>
@@ -808,19 +794,19 @@ const Products = () => {
                                         <th>
                                             Amount
                                         </th>
-                                        <th>
-
-                                        </th>
-
+                                        <th></th>
                                     </tr>
                                 </thead>
 
-                                <tbody >
+                                <tbody>
                                     {
                                         allfiltered.map((pro) => (
-
-                                            <tr onClick={() => router.push(`/admin-dashboard/products/${pro._id}`)} key={pro._id} className='cursor-pointer border-gray-300 hover:bg-gray-50 transition bg-white shadow-sm flex flex-col md:table-row md:p-0 p-4 gap-2 md:gap-0 border-b '>
-                                                <td className=' flex md:gap-2  items-center justify-between md:justify-start md:p-4 '>
+                                            <tr
+                                                onClick={() => router.push(`/admin-dashboard/products/${pro._id}`)}
+                                                key={pro._id}
+                                                className='cursor-pointer border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition bg-white dark:bg-[#1A1C22] shadow-sm flex flex-col md:table-row md:p-0 p-4 gap-2 md:gap-0 border-b'
+                                            >
+                                                <td className='flex md:gap-2 items-center justify-between md:justify-start md:p-4'>
                                                     <div className='size-10 rounded-full overflow-hidden'>
                                                         <Image
                                                             src={pro.image}
@@ -832,35 +818,40 @@ const Products = () => {
                                                     </div>
 
                                                     <div className='leading-tight'>
-                                                        <h1 className='text-lg md:text-[16px] text-[18px] font-semibold text-gray-600'>
+                                                        <h1 className='text-lg md:text-[16px] text-[18px] font-semibold text-gray-600 dark:text-gray-300'>
                                                             {pro.title}
                                                         </h1>
-                                                        <p className='text-gray-600 text-[14px] md:text-[12px]'>{(pro._id.toString().slice(0, 10))}</p>
+                                                        <p className='text-gray-600 dark:text-gray-400 text-[14px] md:text-[12px]'>
+                                                            {(pro._id.toString().slice(0, 10))}
+                                                        </p>
                                                     </div>
                                                 </td>
 
-                                                <td className='flex md:table-cell justify-between py-4'>
-                                                    <h2 className='md:hidden text-[22px] text-bold'>
+                                                <td className='flex md:table-cell justify-between py-2'>
+                                                    <h2 className='md:hidden text-[22px] text-bold text-gray-800 dark:text-gray-200'>
                                                         Date
                                                     </h2>
 
-                                                    <p className='text-gray-500 text-[18px] md:text-[16px]'>{pro.createdAt.toLocaleDateString()}</p>
+                                                    <p className='text-gray-500 dark:text-gray-400 text-[18px] md:text-[16px]'>
+                                                        {pro.createdAt.toLocaleDateString()}
+                                                    </p>
                                                 </td>
 
-                                                <td className='flex md:table-cell justify-between py-4'>
-                                                    <h2 className='md:hidden text-[22px] text-bold'>
+                                                <td className='flex md:table-cell justify-between py-2'>
+                                                    <h2 className='md:hidden text-[22px] text-bold text-gray-800 dark:text-gray-200'>
                                                         Status
                                                     </h2>
 
-
                                                     <div className='flex gap-1 items-center'>
                                                         <BsPatchCheckFill className={`${pro.status === 'inactive' ? 'text-red-500' : "text-[#23CA47]"} text-sm`} />
-                                                        <p className={`${pro.status === 'inactive' ? 'text-red-500' : "text-[#23CA47]"}  text-[18px] md:text-[16px]`}>{pro.status}</p>
+                                                        <p className={`${pro.status === 'inactive' ? 'text-red-500' : "text-[#23CA47]"} text-[18px] md:text-[16px]`}>
+                                                            {pro.status}
+                                                        </p>
                                                     </div>
                                                 </td>
 
-                                                <td className='flex md:table-cell justify-between py-4'>
-                                                    <h1 className='md:hidden text-[22px] text-bold'>
+                                                <td className='flex md:table-cell justify-between py-2'>
+                                                    <h1 className='md:hidden text-[22px] text-bold text-gray-800 dark:text-gray-200'>
                                                         Amount
                                                     </h1>
 
@@ -869,18 +860,21 @@ const Products = () => {
                                                     </p>
                                                 </td>
 
-                                                <td className='flex md:table-cell justify-between py-4 '>
-                                                    <h1 className='md:hidden text-[22px] text-bold'>
+                                                <td className='flex md:table-cell justify-between py-2'>
+                                                    <h1 className='md:hidden text-[22px] text-bold text-gray-800 dark:text-gray-200'>
                                                         Action
                                                     </h1>
 
                                                     <div className='flex gap-1'>
-                                                        <button onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            setopenEditproduct(true)
-                                                            setopenproduct(pro)
-                                                        }} className='p-1.5 bg-gray-200 shadow-2xl rounded-lg cursor-pointer'>
-                                                            < MdEdit className='text-lg text-[#0662FD]' />
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                setopenEditproduct(true)
+                                                                setopenproduct(pro)
+                                                            }}
+                                                            className='p-1.5 bg-gray-200 dark:bg-gray-800 shadow-2xl rounded-lg cursor-pointer'
+                                                        >
+                                                            <MdEdit className='text-lg text-[#0662FD]' />
                                                         </button>
 
                                                         <button
@@ -889,26 +883,21 @@ const Products = () => {
                                                                 setopenDeleteproduct(true)
                                                                 setdeletepro({ _id: pro._id, title: pro.title })
                                                             }}
-                                                            className='p-1.5 bg-gray-200 shadow-2xl rounded-lg cursor-pointer '>
-                                                            < MdDelete className='text-lg text-[#F6473F]' />
+                                                            className='p-1.5 bg-gray-200 dark:bg-gray-800 shadow-2xl rounded-lg cursor-pointer'
+                                                        >
+                                                            <MdDelete className='text-lg text-[#F6473F]' />
                                                         </button>
                                                     </div>
                                                 </td>
-
-
                                             </tr>
                                         ))
                                     }
-
                                 </tbody>
-
                             </table>
                         )
                     }
                 </section>
             </section>
-
-
         </div>
     )
 }

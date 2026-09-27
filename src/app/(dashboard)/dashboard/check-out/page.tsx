@@ -78,7 +78,7 @@ const Checkout = () => {
             <div className="w-[95%] max-w-7xl mx-auto mt-6 grid lg:grid-cols-3 gap-6">
 
                 {/* LEFT */}
-                <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm p-8 space-y-8">
+                <div className="lg:col-span-2 bg-white dark:bg-[#1A1C22] rounded-2xl shadow-sm p-8 space-y-8">
 
                     {/* Contact */}
                     <div className="space-y-5">
@@ -87,7 +87,7 @@ const Checkout = () => {
                                 Contact Information
                             </h2>
 
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-500 dark:text-gray-400 text-sm">
                                 We'll use this to contact you about your order.
                             </p>
                         </div>
@@ -100,7 +100,7 @@ const Checkout = () => {
                                 name='phoneNumber'
                                 type='number'
                                 placeholder="Phone Number"
-                                className="w-full h-12 rounded-xl border border-gray-300 px-4 outline-none focus:border-[#ED8F0C]"
+                                className="w-full h-12 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 px-4 outline-none focus:border-[#ED8F0C]"
                             />
 
                             {
@@ -120,7 +120,7 @@ const Checkout = () => {
                                 Delivery Address
                             </h2>
 
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-500 dark:text-gray-400 text-sm">
                                 Enter where you want your food delivered.
                             </p>
                         </div>
@@ -133,7 +133,7 @@ const Checkout = () => {
                                     onBlur={inipayformik.handleBlur}
                                     name='firstName'
                                     placeholder="First Name"
-                                    className="h-12 rounded-xl border border-gray-300 px-4 outline-none focus:border-[#ED8F0C]"
+                                    className="h-12 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 px-4 outline-none focus:border-[#ED8F0C]"
                                 />
                                 {
                                     inipayformik.errors.firstName && inipayformik.touched.firstName && (
@@ -151,7 +151,7 @@ const Checkout = () => {
                                     onBlur={inipayformik.handleBlur}
                                     name='lastName'
                                     placeholder="Last Name"
-                                    className="h-12 rounded-xl border border-gray-300 px-4 outline-none focus:border-[#ED8F0C]"
+                                    className="h-12 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 px-4 outline-none focus:border-[#ED8F0C]"
                                 />
                                 {
                                     inipayformik.errors.lastName && inipayformik.touched.lastName && (
@@ -169,7 +169,7 @@ const Checkout = () => {
                                 value={inipayformik.values.state}
                                 onBlur={inipayformik.handleBlur}
                                 name='state'
-                                className="w-full h-12 rounded-xl border border-gray-300 px-4 outline-none focus:border-[#ED8F0C]"
+                                className="w-full h-12 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 px-4 outline-none focus:border-[#ED8F0C]"
                             >
                                 <option value="">Select State</option>
                                 <option value="Oyo">Oyo</option>
@@ -192,7 +192,7 @@ const Checkout = () => {
                                     onBlur={inipayformik.handleBlur}
                                     name='address'
                                     placeholder="Street Address"
-                                    className="h-12 rounded-xl border border-gray-300 px-4 outline-none focus:border-[#ED8F0C]"
+                                    className="h-12 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 px-4 outline-none focus:border-[#ED8F0C]"
                                 />
                                 {
                                     inipayformik.errors.address && inipayformik.touched.address && (
@@ -209,7 +209,7 @@ const Checkout = () => {
                                     value={inipayformik.values.town}
                                     onBlur={inipayformik.handleBlur}
                                     name='town'
-                                    className="h-12 rounded-xl border border-gray-300 px-4 outline-none focus:border-[#ED8F0C]"
+                                    className="h-12 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 px-4 outline-none focus:border-[#ED8F0C]"
                                 >
                                     <option value="">Town/City</option>
                                     <option value="Ibadan">Ibadan</option>
@@ -229,16 +229,16 @@ const Checkout = () => {
 
                 </div>
 
-                <div className="bg-white rounded-2xl shadow-sm p-6 h-fit sticky top-24">
+                <div className="bg-white dark:bg-[#1A1C22] rounded-2xl shadow-sm p-6 h-fit sticky top-24">
 
                     <div className='flex justify-between mb-6'>
-                        <h2 className="text-2xl font-bold">
+                        <h2 className="text-2xl font-bold dark:text-white">
                             Order Summary
                         </h2>
 
-                        <h3 className='text-[20px] font-bold'>
+                        <h3 className='text-[20px] font-bold dark:text-white'>
                             {
-                               cartNumber <=0 ? '0' : cartNumber <= 9 ? `0${cartNumber} ` : cartNumber
+                                cartNumber <= 0 ? '0' : cartNumber <= 9 ? `0${cartNumber} ` : cartNumber
                             }
                         </h3>
                     </div>
@@ -248,7 +248,7 @@ const Checkout = () => {
                         {cart.map((each: product) => (
                             <div
                                 key={each._id}
-                                className="flex items-center gap-4 bg-gray-50 rounded-2xl p-3 shadow-sm"
+                                className="flex items-center gap-4 bg-gray-50 dark:bg-gray-800 rounded-2xl p-3 shadow-sm"
                             >
 
                                 <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
@@ -263,11 +263,11 @@ const Checkout = () => {
 
                                 <div className="flex-1">
 
-                                    <h3 className="font-semibold text-gray-800">
+                                    <h3 className="font-semibold text-gray-800 dark:text-white">
                                         {each.title}
                                     </h3>
 
-                                    <p className="text-sm text-gray-500 mt-1">
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                                         Qty: {each.quantity}
                                     </p>
 
@@ -278,7 +278,7 @@ const Checkout = () => {
                                 </div>
 
                                 <div className='flex items-center justify-center'>
-                                    <FaTimes onClick={() => decRease(each._id)} className='text-base md:text-lg cursor-pointer hover:text-red-500 transition' />
+                                    <FaTimes onClick={() => decRease(each._id)} className='text-base md:text-lg cursor-pointer hover:text-red-500 transition dark:text-gray-400' />
                                 </div>
 
                             </div>
@@ -289,24 +289,24 @@ const Checkout = () => {
                     <div className="space-y-4">
 
                         <div className="flex justify-between">
-                            <span className="text-gray-500">
+                            <span className="text-gray-500 dark:text-gray-400">
                                 Subtotal
                             </span>
 
-                            <span>₦{(subTotal).toLocaleString()}</span>
+                            <span className='dark:text-gray-200'>₦{(subTotal).toLocaleString()}</span>
                         </div>
 
                         <div className="flex justify-between">
-                            <span className="text-gray-500">
+                            <span className="text-gray-500 dark:text-gray-400">
                                 Delivery Fee
-                            </span> 
+                            </span>
 
-                            <span>₦{(cart.length === 0 ? "0" : '1000').toLocaleString()}</span>
+                            <span className='dark:text-gray-200'>₦{(cart.length === 0 ? "0" : '1000').toLocaleString()}</span>
                         </div>
 
-                        <hr />
+                        <hr className='dark:border-gray-700' />
 
-                        <div className="flex justify-between text-xl font-bold">
+                        <div className="flex justify-between text-xl font-bold dark:text-white">
 
                             <span>Total</span>
 

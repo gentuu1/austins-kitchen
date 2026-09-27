@@ -92,13 +92,13 @@ const Page = () => {
                 <NavBar />
             </div>
 
-            <section className="w-full min-h-100 bg-[#FFFFFF]/95 backdrop-blur-xl mt-5">
+            <section className="w-full min-h-100 backdrop-blur-xl mt-5">
                 <div className="w-full flex flex-col h-30 items-center justify-center space-y-3">
-                    <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight`}>
+                    <h1 className={`${anton.className} text-center md:text-5xl text-4xl tracking-tight dark:text-[#D2D3DB]`}>
                         ABOUT-US
                     </h1>
 
-                    <p className={`text-center text-sm tracking-tight`}>
+                    <p className={`text-center text-sm tracking-tight dark:text-gray-300`}>
                         <a className='underline hover:text-[#ED8F0C]' href="/">Home</a>/About
                     </p>
                 </div>
@@ -106,7 +106,7 @@ const Page = () => {
 
                 <div className=' md:w-[90%] w-full m-auto p-5 '>
                     <div className='w-full'>
-                        <h1 className={`${anton.className} text-[#3E4C59] text-2xl font-light tracking-tight`}>
+                        <h1 className={`${anton.className} text-[#3E4C59] dark:text-[#D2D3DB] text-2xl font-light tracking-tight`}>
                             OUR MISSION
                         </h1>
 
@@ -114,34 +114,33 @@ const Page = () => {
                             Our Story
                         </p>
 
-                        <h1 className={`${anton.className} text-3xl mt-10 font-light tracking-tight  max-w-70`}>
+                        <h1 className={`${anton.className} text-3xl mt-10 font-light tracking-tight max-w-70 dark:text-white`}>
                             The story about
                             Austine's kitchen foods
                         </h1>
 
-                        <p className="text-[#3E4C59] text-lg font-semibold italic transform mt-5  md:max-w-3xl">
-
+                        <p className="text-[#3E4C59] dark:text-gray-300 text-lg font-semibold italic transform mt-5 md:max-w-3xl">
                             Austine's kitchen foods is a dynamic and innovative food company specializing in freshly made shawarma, smoothies,milkshakes, and parfaits. Established in February 2016, serving the public—both male and female, youngand old. Our mission is to provide delicious, high-quality food and beverages in a hygienic and welcoming environment.
                         </p>
 
 
-                        <div className='w-full flex md:flex-row flex-col  h-fit mt-10'>
+                        <div className='w-full flex md:flex-row flex-col h-fit mt-10'>
                             <div className='md:w-[50%] w-full h-fit'>
-                                <h1 className={`${anton.className} text-[#3E4C59] text-2xl font-light tracking-tight`}>
+                                <h1 className={`${anton.className} text-[#3E4C59] dark:text-[#D2D3DB] text-2xl font-light tracking-tight`}>
                                     OUR VISION
                                 </h1>
 
-                                <p className="text-[#3E4C59] text-lg font-semibold transform mt-5  max-w-90 text-center">
+                                <p className="text-[#3E4C59] dark:text-gray-300 text-lg font-semibold transform mt-5 max-w-90 text-center">
                                     What sets Austine's kitchen foods apart from the competition is our unwavering commitment to freshness and hygiene. All our products are freshly made in a clean and hygienic environment, ensuring that our customers receive the best possible food and beverage experience.
                                 </p>
                             </div>
 
                             <div className='md:w-[50%] w-full pl-5 h-fit'>
-                                <h1 className={`${anton.className} text-[#3E4C59] text-2xl font-light tracking-tight`}>
+                                <h1 className={`${anton.className} text-[#3E4C59] dark:text-[#D2D3DB] text-2xl font-light tracking-tight`}>
                                     OUR MISSION
                                 </h1>
 
-                                <p className="text-[#3E4C59] text-lg font-semibold italic transform mt-4 tracking-tight md:max-w-70 ">
+                                <p className="text-[#3E4C59] dark:text-gray-300 text-lg font-semibold italic transform mt-4 tracking-tight md:max-w-70">
                                     To consistently deliver high quality,
                                     mouth-watering food and
                                     beverages that delightour
@@ -157,7 +156,7 @@ const Page = () => {
 
                 <section className='mb-5 w-[90%] md:py-15 py-10 rounded-lg flex md:flex-row flex-col justify-center items-center space-y-10 md:space-y-0 md:space-x-10 m-auto bg-[#ED8F0C] mt-10 text-white'>
 
-                    <div className=' flex flex-col items-center'>
+                    <div className='flex flex-col items-center'>
                         <h1 className={`${montserrat.className} text-5xl font-bold`}>
                             <Counter end={5000} suffix="+" />
                         </h1>
@@ -165,19 +164,20 @@ const Page = () => {
                             SATISFIED CUSTOMERS
                         </p>
                     </div>
-                    <div className='  flex flex-col items-center'>
+
+                    <div className='flex flex-col items-center'>
                         <h1 className={`${montserrat.className} text-5xl font-bold`}>
                             <Counter end={9} suffix="+" />
                         </h1>
                         <p className="text-white text-lg tracking-wide">Years Of Experience</p>
                     </div>
-                    <div className=' flex flex-col items-center'>
+
+                    <div className='flex flex-col items-center'>
                         <h1 className={`${montserrat.className} text-5xl font-bold`}>
                             <Counter end={100} suffix="%" />
                         </h1>
                         <p className="text-white text-lg tracking-wide">Fresh & Tasty</p>
                     </div>
-
 
                 </section>
             </section>

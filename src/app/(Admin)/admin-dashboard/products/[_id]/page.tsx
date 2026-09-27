@@ -27,7 +27,7 @@ import Del_Edit from "@/components/Del_Edit";
         if (!product) redirect('/admin-dashboard/products')
 
         return (
-            <div className="min-h-screen bg-zinc-50">
+            <div className="min-h-screen z">
 
                 <section className="w-full max-w-7xl mx-auto px-5 py-8">
 
